@@ -614,93 +614,60 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
   S4 · POURQUOI TYPESCRIPT
 ════════════════════════════════ -->
 <div class="slide" id="s7">
-  <div class="bg-glow" style="width:350px;height:350px;background:rgba(96,165,250,.08);top:-80px;right:-80px"></div>
-  <div class="z1" style="width:100%;max-width:980px">
-    <div class="tag">Choix Technologique</div>
-    <h2 class="fade-up">Pourquoi TypeScript · pas JavaScript ?</h2>
-    <div class="row fade-up" style="align-items:flex-start">
-      <!-- COLONNE GAUCHE : raisons -->
-      <div class="col" style="max-width:270px">
-        <div class="card blue">
-          <div class="card-icon">🔷</div>
-          <h3 style="color:var(--blue)">6 devs · 6 styles</h3>
-          <p>Sans types, chacun passe des données différentes aux fonctions. TypeScript impose un contrat commun. Le compilateur détecte les incohérences <strong>avant</strong> l'exécution.</p>
-        </div>
-        <div class="card green">
-          <div class="card-icon">🛡️</div>
-          <h3 style="color:var(--green)">Erreurs à la compilation</h3>
-          <p>Un bug TypeScript = erreur immédiate dans l'éditeur. Un bug JavaScript = erreur en production devant l'utilisateur.</p>
-        </div>
-        <div class="card purple">
-          <div class="card-icon">⚡</div>
-          <h3 style="color:var(--purple)">Refactoring sûr</h3>
-          <p>Renommer une prop, changer une interface → le compilateur liste <strong>tous</strong> les endroits à corriger. Impossible d'en oublier un.</p>
+  <div class="bg-glow" style="width:500px;height:500px;background:rgba(96,165,250,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="z1" style="width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.5vh,30px)">
+
+    <div style="text-align:center">
+      <div class="tag fade-up" style="color:var(--blue);justify-content:center;margin-bottom:8px">Choix technique</div>
+      <h2 class="fade-up" style="font-size:clamp(22px,3vw,42px)">Pourquoi <span style="color:var(--blue)">TypeScript</span> · pas JavaScript ?</h2>
+      <p class="fade-up" style="color:var(--muted2);font-size:clamp(12px,1.1vw,15px);margin-top:6px">6 devs · un seul contrat · zéro ambiguïté</p>
+    </div>
+
+    <!-- 3 raisons -->
+    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%">
+      <div style="padding:22px;border-radius:16px;border:1px solid rgba(96,165,250,.3);background:rgba(96,165,250,.06);text-align:center">
+        <div style="font-size:clamp(32px,4vw,52px);margin-bottom:10px">🔷</div>
+        <div style="font-weight:900;color:var(--blue);font-size:clamp(13px,1.3vw,17px);margin-bottom:6px">Contrat commun</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2);line-height:1.6">6 devs = 6 styles sans types. TS impose les mêmes interfaces pour tout le monde.</div>
+      </div>
+      <div style="padding:22px;border-radius:16px;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.06);text-align:center">
+        <div style="font-size:clamp(32px,4vw,52px);margin-bottom:10px">🛡️</div>
+        <div style="font-weight:900;color:var(--purple);font-size:clamp(13px,1.3vw,17px);margin-bottom:6px">Bug en éditeur</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2);line-height:1.6">JS → bug en prod devant l'utilisateur. TS → erreur rouge immédiate avant d'exécuter.</div>
+      </div>
+      <div style="padding:22px;border-radius:16px;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.06);text-align:center">
+        <div style="font-size:clamp(32px,4vw,52px);margin-bottom:10px">⚡</div>
+        <div style="font-weight:900;color:var(--green);font-size:clamp(13px,1.3vw,17px);margin-bottom:6px">Refactoring sûr</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2);line-height:1.6">Renommer une prop → le compilo liste tout ce qui casse. Impossible d'en oublier.</div>
+      </div>
+    </div>
+
+    <!-- Comparaison mini code -->
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%">
+      <div class="code-wrap" style="border-color:rgba(230,57,70,.3)">
+        <div class="code-bar" style="background:rgba(230,57,70,.15)"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label" style="color:var(--red)">❌ JavaScript — bug silencieux</span></div>
+        <div class="code-body" style="font-size:11px">
+<span class="kw">function</span> <span class="fn">scoreFilm</span>(film, note) {
+  <span class="kw">return</span> film.titre + <span class="str">" : "</span> + note.valeur
+}
+scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
+<span class="cm">// → undefined au runtime 😬</span>
         </div>
       </div>
-      <!-- COLONNE DROITE : exemples de code -->
-      <div class="col" style="flex:1.5">
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
-            <span class="code-label">JavaScript ← ce qu'on aurait eu</span>
-          </div>
-          <div class="code-body" style="font-size:12px">
-<span class="dim">// Aucun contrat — chacun passe ce qu'il veut</span>
-<span class="err">function scoreFilm(film, note) {</span>
-<span class="err">  return film.titre + " : " + note.valeur;</span>
-<span class="err">}</span>
-<span class="dim">// Dylan appelle : scoreFilm({ title: "..." }, 8)</span>
-<span class="dim">// → undefined au runtime. Bug silencieux.</span>
-          </div>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
-            <span class="code-label">TypeScript ← ce qu'on a choisi</span>
-          </div>
-          <div class="code-body" style="font-size:12px">
-<span class="dim">// Interface partagée — tout le monde voit le contrat</span>
-<span class="bl">interface</span> <span class="yl">Film</span> {
-  <span class="kw">titre</span>: <span class="cy">string</span>;
-  <span class="kw">id</span>:    <span class="cy">number</span>;
+      <div class="code-wrap" style="border-color:rgba(74,222,128,.3)">
+        <div class="code-bar" style="background:rgba(74,222,128,.1)"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label" style="color:var(--green)">✅ TypeScript — erreur immédiate</span></div>
+        <div class="code-body" style="font-size:11px">
+<span class="kw">function</span> <span class="fn">scoreFilm</span>(film: <span class="bl">Film</span>, note: <span class="bl">Note</span>): <span class="bl">string</span> {
+  <span class="kw">return</span> <span class="str">`<span style="color:#e2e8f0">${</span>film.titre<span style="color:#e2e8f0">}</span> : <span style="color:#e2e8f0">${</span>note.valeur<span style="color:#e2e8f0">}</span>/10`</span>
 }
-<span class="bl">interface</span> <span class="yl">Note</span> {
-  <span class="kw">valeur</span>: <span class="cy">number</span>;  <span class="dim">// 0–10</span>
-  <span class="kw">juryId</span>: <span class="cy">number</span>;
-}
-
-<span class="bl">function</span> <span class="ok">scoreFilm</span>(film: <span class="yl">Film</span>, note: <span class="yl">Note</span>): <span class="cy">string</span> {
-  <span class="bl">return</span> <span class="str">`${film.titre} : ${note.valeur}/10`</span>;
-}
-<span class="dim">// Dylan appelle : scoreFilm({ title: "..." }, 8)</span>
-<span class="ok">// ✖ Erreur immédiate : 'title' n'existe pas sur Film</span>
-<span class="ok">// ✖ Erreur immédiate : number n'est pas Note</span>
-          </div>
-        </div>
-        <div class="code-wrap">
-          <div class="code-bar">
-            <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
-            <span class="code-label">Exemple réel — useState toujours typé</span>
-          </div>
-          <div class="code-body" style="font-size:12px">
-<span class="err">// ❌ JavaScript / TS sans strict</span>
-<span class="err">const [films, setFilms] = useState([]);</span>
-<span class="err">const [error, setError] = useState(null);</span><br>
-<span class="ok">// ✅ TypeScript strict — utilisé dans le projet</span>
-<span class="ok">const [films, setFilms]     = useState&lt;<span class="yl">Film</span>[]&gt;([]);</span>
-<span class="ok">const [error, setError]     = useState&lt;<span class="cy">string</span> | <span class="cy">null</span>&gt;(null);</span>
-<span class="ok">const [isLoading, setLoad]  = useState&lt;<span class="cy">boolean</span>&gt;(false);</span>
-          </div>
+scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
+<span class="cm">// ✖ Erreur : title ≠ titre · 8 ≠ Note ✅</span>
         </div>
       </div>
     </div>
-    <div class="hl-b fade-up">TypeScript = <strong>filet de sécurité collectif</strong>. Sur un projet à 6, un type manquant = un bug potentiel pour toute l'équipe.</div>
+
   </div>
 </div>
-
-<!-- ════════════════════════════════
-  S5 · ARBORESCENCE
-════════════════════════════════ -->
 <div class="slide" id="s9b">
   <div class="bg-glow" style="width:600px;height:600px;background:rgba(230,57,70,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
   <div class="bg-glow" style="width:300px;height:300px;background:rgba(251,191,36,.06);top:-60px;right:-60px"></div>
@@ -834,88 +801,62 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
   S7 · HISTORIQUE COMMITS
 ════════════════════════════════ -->
 <div class="slide" id="s18">
-  <div class="bg-glow" style="width:500px;height:500px;background:rgba(34,211,238,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-  <div class="z1" style="width:100%;max-width:980px">
-    <div class="tag" style="color:var(--cyan)">IA Augmentée · Utilisée intelligemment</div>
-    <h2 class="fade-up">Nous avons dirigé l'IA — elle ne nous a pas remplacés</h2>
+  <style>
+    .role-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 20px;border-radius:20px;flex:1;text-align:center}
+    .task-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;font-size:clamp(10px,.9vw,13px);font-weight:600;margin:3px}
+    @keyframes ia-blink{0%,100%{opacity:.7}50%{opacity:1}}
+  </style>
+  <div class="bg-glow" style="width:600px;height:600px;background:rgba(34,211,238,.06);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
 
-    <div class="row fade-up" style="align-items:flex-start;gap:18px">
+  <div class="z1" style="width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.5vh,30px)">
 
-      <!-- COLONNE GAUCHE : le principe -->
-      <div class="col" style="max-width:300px;gap:14px">
-        <div class="card" style="border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.05)">
-          <div class="card-icon">🧠</div>
-          <h3 style="color:var(--cyan)">L'IA = un junior très rapide</h3>
-          <p>Elle écrit vite. Mais sans cadre, elle invente ses propres conventions, duplique du code, ignore les patterns existants.</p>
-          <p style="margin-top:8px;color:#fca5a5"><strong>Sans contrôle = chaos garanti sur 6 devs.</strong></p>
-        </div>
-        <div class="card green">
-          <div class="card-icon">🎯</div>
-          <h3 style="color:var(--green)">Notre approche</h3>
-          <p>On lui donne le contexte <strong>avant</strong> qu'elle code.<br>On contrôle <strong>après</strong> qu'elle a codé.<br>On valide chaque PR humainement.</p>
+    <!-- Titre -->
+    <div style="text-align:center">
+      <div class="tag fade-up" style="color:var(--cyan);justify-content:center;margin-bottom:8px">IA Augmentée</div>
+      <h2 class="fade-up" style="font-size:clamp(22px,3vw,42px)">On dirige l'IA · <span style="color:var(--cyan)">elle ne nous remplace pas</span></h2>
+    </div>
+
+    <!-- Visual : Nous → IA → Code -->
+    <div class="fade-up" style="display:flex;align-items:center;justify-content:center;gap:clamp(10px,2vw,28px);width:100%">
+
+      <!-- NOUS -->
+      <div class="role-card" style="border:2px solid rgba(230,57,70,.4);background:rgba(230,57,70,.07);max-width:260px">
+        <div style="font-size:clamp(40px,5vw,64px)">🧑‍💻</div>
+        <div style="font-weight:900;font-size:clamp(15px,1.6vw,22px);color:var(--red)">Nous</div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center">
+          <span class="task-chip" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.3);color:#fca5a5">🏗️ Architecture</span>
+          <span class="task-chip" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.3);color:#fca5a5">✅ Review PR</span>
+          <span class="task-chip" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.3);color:#fca5a5">🎯 Décisions</span>
+          <span class="task-chip" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.3);color:#fca5a5">📋 Conventions</span>
         </div>
       </div>
 
-      <!-- COLONNE CENTRE : conventions.md -->
-      <div class="prompt-card" style="flex:1">
-        <div class="file-tag">📄 conventions.md — lu avant chaque session</div>
-        <h3 style="color:var(--cyan);margin-bottom:10px">Les règles qu'on lui impose</h3>
-        <div class="code-wrap">
-          <div class="code-bar"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label">extrait du prompt</span></div>
-          <div class="code-body" style="font-size:clamp(11px,0.9vw,14px)">
-<span class="dim"># Ce que l'IA DOIT faire avant d'écrire</span>
-<span class="yl">1.</span> Lire l'arborescence — ne rien créer qui existe déjà
-<span class="yl">2.</span> Utiliser <span class="cy">services/api.ts</span> — jamais fetch() direct
-<span class="yl">3.</span> TypeScript strict — zéro <span class="err">any</span>, types explicites
-<span class="yl">4.</span> Écrire les tests unitaires avec le composant<br>
-<span class="dim"># Ce qui est interdit sans exception</span>
-<span class="err">any · console.log · @ts-ignore · inline style</span>
-<span class="err">créer un 2e Button, un 2e apiFetch, un 2e useLoading</span>
-          </div>
-        </div>
-        <p style="font-size:clamp(12px,0.9vw,14px);color:var(--muted2);margin-top:10px;line-height:1.6">
-          Claude · Copilot · chaque outil lit ce fichier. Résultat : <strong style="color:var(--text)">code identique en style et structure quel que soit le dev qui a utilisé l'IA.</strong>
-        </p>
+      <!-- Flèches -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
+        <div style="font-size:clamp(20px,2.5vw,32px);color:var(--cyan);animation:ia-blink 1.5s ease-in-out infinite">→</div>
+        <div style="font-size:clamp(9px,.85vw,11px);color:var(--muted);text-align:center;max-width:80px">donne les règles · contrôle</div>
+        <div style="font-size:clamp(20px,2.5vw,32px);color:var(--muted);animation:ia-blink 1.5s ease-in-out infinite .75s">←</div>
+        <div style="font-size:clamp(9px,.85vw,11px);color:var(--muted);text-align:center;max-width:80px">code · tests · répétitif</div>
       </div>
 
-      <!-- COLONNE DROITE : review.md -->
-      <div class="prompt-card" style="flex:1">
-        <div class="file-tag">📄 review.md — après chaque feature</div>
-        <h3 style="color:var(--cyan);margin-bottom:10px">On la fait se relire elle-même</h3>
-        <p style="font-size:clamp(12px,0.9vw,14px);color:var(--muted2);margin-bottom:12px;line-height:1.6">
-          Une fois la feature terminée, l'IA change de rôle : elle devient <strong style="color:var(--text)">reviewer senior</strong> et relit son propre code avec un œil critique.
-        </p>
-        <div class="steps" style="gap:8px">
-          <div class="step" style="padding:9px 12px">
-            <div class="step-num" style="width:24px;height:24px;font-size:11px">1</div>
-            <div class="step-body"><h4>Lance <ic>npm run check</ic></h4><p>Diagnostic complet : format · lint · types · tests</p></div>
-          </div>
-          <div class="step" style="padding:9px 12px">
-            <div class="step-num" style="width:24px;height:24px;font-size:11px">2</div>
-            <div class="step-body"><h4>Corrige ESLint</h4><p>Jamais de <ic>eslint-disable</ic> — corriger le code</p></div>
-          </div>
-          <div class="step" style="padding:9px 12px">
-            <div class="step-num" style="width:24px;height:24px;font-size:11px">3</div>
-            <div class="step-body"><h4>Détecte les duplications</h4><p>Extrait composant ou hook si besoin</p></div>
-          </div>
-          <div class="step" style="padding:9px 12px;border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.05)">
-            <div class="step-num" style="width:24px;height:24px;font-size:11px;background:linear-gradient(135deg,var(--green),var(--cyan))">4</div>
-            <div class="step-body"><h4 style="color:var(--green)">Boucle jusqu'au vert</h4><p><ic>npm run check</ic> → corriger → répéter</p></div>
-          </div>
+      <!-- IA -->
+      <div class="role-card" style="border:2px solid rgba(34,211,238,.4);background:rgba(34,211,238,.07);max-width:260px">
+        <div style="font-size:clamp(40px,5vw,64px);animation:float 3s ease-in-out infinite">🤖</div>
+        <div style="font-weight:900;font-size:clamp(15px,1.6vw,22px);color:var(--cyan)">L'IA</div>
+        <div style="display:flex;flex-wrap:wrap;justify-content:center">
+          <span class="task-chip" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#67e8f9">⚡ Boilerplate</span>
+          <span class="task-chip" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#67e8f9">🧪 Tests unitaires</span>
+          <span class="task-chip" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#67e8f9">🔄 Refactoring</span>
+          <span class="task-chip" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#67e8f9">📝 Documentation</span>
         </div>
       </div>
 
     </div>
-    <div class="hl-b fade-up" style="margin-top:14px">
-      L'IA est un <strong>outil sous contrôle</strong> · pas un auteur autonome.<br>
-      Chaque ligne générée est relue · testée · validée par un humain avant d'atteindre la PR.
-    </div>
+
+
+
   </div>
 </div>
-
-<!-- ════════════════════════════════
-  S10 · TESTS UNITAIRES
-════════════════════════════════ -->
 <div class="slide" id="s20">
   <div class="bg-glow" style="width:350px;height:350px;background:rgba(74,222,128,.06);bottom:-80px;left:-80px"></div>
   <div class="z1" style="width:100%;max-width:980px">
