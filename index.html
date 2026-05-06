@@ -460,7 +460,7 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
   <div class="z1" style="width:100%;max-width:960px;text-align:center">
     <div class="tag fade-up" style="justify-content:center">Le Projet en Chiffres</div>
     <h2 class="fade-up" style="margin-bottom:28px">Mars AI Festival · ce qu'on a construit</h2>
-    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;width:100%">
+    <div class="fade-up" style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;width:100%">
       <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .3s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
         <div style="font-size:clamp(52px,6vw,80px);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent" class="count-up" data-target="928">0</div>
         <div style="font-size:clamp(14px,1.2vw,18px);font-weight:700;color:var(--text)">Commits Git</div>
@@ -701,89 +701,70 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
 <!-- ════════════════════════════════
   S5 · ARBORESCENCE
 ════════════════════════════════ -->
-<div class="slide" id="s10">
-  <div class="bg-glow" style="width:350px;height:350px;background:rgba(251,191,36,.07);top:-80px;right:-80px"></div>
-  <div class="z1" style="width:100%;max-width:980px">
-    <div class="tag">Problème Réel · Solution Progressive</div>
-    <h2 class="fade-up">Mac · Linux · Windows — Zéro compatibilité par défaut</h2>
-    <div class="row fade-up" style="align-items:flex-start;margin-bottom:16px">
-      <!-- PROBLÈME -->
-      <div class="card accent" style="flex:1">
-        <div class="card-icon">💥</div>
-        <h3 style="color:var(--red)">Le problème concret</h3>
-        <p style="line-height:1.8">
-          Stéphane sur <strong>macOS / Linux</strong><br>
-          Collaborateurs sur <strong>Windows</strong><br><br>
-          <span style="color:#fca5a5">● Fins de ligne <ic>LF</ic> vs <ic>CRLF</ic> → diffs Git pollués</span><br>
-          <span style="color:#fca5a5">● Chemins de fichiers <ic>/</ic> vs <ic>\</ic> → erreurs au build</span><br>
-          <span style="color:#fca5a5">● Versions Node différentes → comportements divergents</span><br>
-          <span style="color:#fca5a5">● "Ça marche chez moi" → bloquant en intégration</span>
-        </p>
+<div class="slide" id="s9b">
+  <div class="bg-glow" style="width:600px;height:600px;background:rgba(230,57,70,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="bg-glow" style="width:300px;height:300px;background:rgba(251,191,36,.06);top:-60px;right:-60px"></div>
+  <div class="z1" style="width:100%;max-width:900px;text-align:center">
+    <div style="font-size:clamp(72px,10vw,130px);margin-bottom:12px;animation:float 2.5s ease-in-out infinite;filter:drop-shadow(0 0 30px rgba(230,57,70,.5))">😤</div>
+    <div style="font-size:clamp(28px,3.5vw,52px);font-weight:900;color:var(--yellow);letter-spacing:-1px;line-height:1.1;margin-bottom:6px">Problèmes rencontrés</div>
+    <div style="font-size:clamp(13px,1.3vw,18px);color:var(--muted2);margin-bottom:28px">Et comment on les a résolus</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
+      <div style="padding:16px;border-radius:14px;border:1px solid rgba(230,57,70,.3);background:rgba(230,57,70,.06)">
+        <div style="font-size:32px;margin-bottom:8px">😡</div>
+        <div style="font-weight:800;color:var(--red);font-size:clamp(12px,1.1vw,15px);margin-bottom:4px">3 OS · zéro compatibilité</div>
+        <div style="font-size:clamp(10px,.9vw,12px);color:var(--muted2)">Mac, Linux, Windows — chacun son env, ses bugs</div>
       </div>
-      <!-- ÉTAPE 1 : TS -->
-      <div class="card blue" style="flex:1">
-        <div class="card-icon">🔷</div>
-        <h3 style="color:var(--blue)">Étape 1 — TypeScript strict</h3>
-        <p style="line-height:1.8">
-          Premier rempart contre les divergences.<br><br>
-          <span style="color:#93c5fd">● Types explicites = même contrat sur tous les OS</span><br>
-          <span style="color:#93c5fd">● Le compilateur détecte les erreurs avant l'exécution</span><br>
-          <span style="color:#93c5fd">● <ic>strict</ic> · <ic>noUnusedLocals</ic> · <ic>noUnusedParameters</ic></span><br>
-          <span style="color:#93c5fd">● Un seul <ic>tsconfig.json</ic> partagé dans le repo</span>
-        </p>
-      </div>
-      <!-- ÉTAPE 2 : Prettier -->
-      <div class="card" style="flex:1;border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.04)">
-        <div class="card-icon">🎨</div>
-        <h3 style="color:var(--yellow)">Étape 2 — Prettier <ic style="color:var(--yellow)">"endOfLine": "lf"</ic></h3>
-        <p style="line-height:1.8">
-          Résout les fins de ligne CRLF/LF.<br><br>
-          <span style="color:#fde68a">● Force <ic>LF</ic> sur tous les OS</span><br>
-          <span style="color:#fde68a">● Git ne voit plus de diffs parasites</span><br>
-          <span style="color:#fde68a">● Prettier reformate automatiquement au pre-push</span>
-        </p>
+
+      <div style="padding:16px;border-radius:14px;border:1px solid rgba(251,191,36,.3);background:rgba(251,191,36,.06)">
+        <div style="font-size:32px;margin-bottom:8px">😤</div>
+        <div style="font-weight:800;color:var(--yellow);font-size:clamp(12px,1.1vw,15px);margin-bottom:4px">Qualité inconsistante</div>
+        <div style="font-size:clamp(10px,.9vw,12px);color:var(--muted2)">6 devs · 6 styles · diffs illisibles</div>
       </div>
     </div>
-    <!-- DOCKER ROW -->
-    <div class="row fade-up" style="align-items:stretch">
-      <div class="card green" style="flex:2;display:flex;gap:20px;align-items:flex-start">
-        <div>
-          <div class="card-icon">🐳</div>
-          <h3 style="color:var(--green)">Étape 3 — Docker Compose · La solution définitive</h3>
-          <p style="line-height:1.8;margin-top:6px">
-            Un seul <ic>docker-compose.yml</ic> → <strong>même environnement sur Mac, Linux et Windows sans exception.</strong><br>
-            Node version fixée · MySQL version fixée · variables d'env uniformes · réseau interne isolé.
-          </p>
-        </div>
-        <div class="code-wrap" style="min-width:300px;flex:1">
-          <div class="code-bar"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label">docker-compose.yml</span></div>
-          <div class="code-body" style="font-size:11.5px">
-<span class="kw">services</span>:
-  <span class="bl">frontend</span>:
-    build: <span class="str">Dockerfile.frontend</span>
-    ports: [<span class="yl">"5173:5173"</span>]
-  <span class="bl">backend</span>:
-    build: <span class="str">Dockerfile.backend</span>
-    ports: [<span class="yl">"5500:5500"</span>]
-  <span class="bl">db</span>:
-    image: <span class="str">mysql:8</span>
-    environment:
-      MYSQL_ROOT_PASSWORD: <span class="yl">****</span>
-          </div>
-        </div>
+    <div style="margin-top:18px;font-size:clamp(13px,1.2vw,16px);color:var(--green);font-weight:700">→ À chaque problème, une solution concrète</div>
+  </div>
+</div>
+<div class="slide" id="s10">
+  <style>
+    .os-arrow{font-size:clamp(20px,2vw,28px);color:var(--muted);align-self:center;animation:arrow-pulse 1.5s ease-in-out infinite}
+    @keyframes arrow-pulse{0%,100%{opacity:.4;transform:translateX(0)}50%{opacity:1;transform:translateX(4px)}}
+    .os-box{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px 24px;border-radius:16px;border:1px solid var(--border2);background:var(--card);min-width:110px}
+    .os-box .os-icon{font-size:clamp(32px,3.5vw,48px)}
+    .os-box .os-name{font-size:clamp(11px,1vw,14px);font-weight:700;color:var(--text)}
+    .os-box .os-prob{font-size:clamp(9px,.85vw,11px);color:var(--red);margin-top:2px}
+    .docker-center{display:flex;flex-direction:column;align-items:center;gap:10px;padding:28px 36px;border-radius:24px;border:2px solid rgba(34,211,238,.5);background:rgba(34,211,238,.07);box-shadow:0 0 50px rgba(34,211,238,.15)}
+  </style>
+  <div class="bg-glow" style="width:500px;height:500px;background:rgba(34,211,238,.06);top:50%;left:50%;transform:translate(-50%,-50%);z-index:0"></div>
+  <div class="z1" style="width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.5vh,28px)">
+    <div style="text-align:center">
+      <div class="tag fade-up" style="justify-content:center;margin-bottom:8px">Problème Réel · Solution Docker</div>
+      <h2 class="fade-up" style="font-size:clamp(22px,2.8vw,40px)">6 devs · 3 OS · <span style="color:var(--cyan)">1 solution</span></h2>
+    </div>
+    <div class="fade-up" style="display:flex;align-items:center;justify-content:center;gap:clamp(8px,1.5vw,20px);width:100%;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="os-box"><div class="os-icon">🍎</div><div class="os-name">macOS</div><div class="os-prob">LF · /</div></div>
+        <div class="os-box"><div class="os-icon">🐧</div><div class="os-name">Linux</div><div class="os-prob">LF · /</div></div>
+        <div class="os-box"><div class="os-icon">🪟</div><div class="os-name">Windows</div><div class="os-prob">CRLF · \</div></div>
       </div>
-      <div class="card" style="flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
-        <div style="font-size:36px">✅</div>
-        <h3>Résultat</h3>
-        <p><ic>docker compose up</ic><br>et c'est identique<br>sur <strong>tous les OS</strong></p>
+      <div class="os-arrow">→</div>
+      <div class="docker-center">
+        <div style="font-size:clamp(48px,6vw,80px);line-height:1">🐳</div>
+        <div style="font-weight:900;font-size:clamp(16px,2vw,26px);color:var(--cyan)">Docker Compose</div>
+        <ic style="font-size:clamp(11px,1vw,14px);color:var(--cyan)">docker-compose.yml</ic>
+        <div style="font-size:clamp(10px,.9vw,12px);color:var(--muted2);margin-top:4px;text-align:center">Node fixée · MySQL fixée<br>Même env · Réseau isolé</div>
       </div>
+      <div class="os-arrow">→</div>
+      <div style="display:flex;flex-direction:column;gap:10px;align-items:center">
+        <div style="font-size:clamp(40px,5vw,64px)">✅</div>
+        <div style="font-weight:900;font-size:clamp(14px,1.6vw,22px);color:var(--green);text-align:center">Identique<br>sur tous les OS</div>
+        <ic style="color:var(--green);font-size:clamp(11px,1vw,14px)">docker compose up</ic>
+      </div>
+    </div>
+    <div class="fade-up hl-g" style="font-size:clamp(12px,1.2vw,16px);text-align:center;max-width:700px">
+      "Ça marche chez moi" → <strong style="color:var(--green)">ça marche partout, toujours, pour tout le monde</strong>
     </div>
   </div>
 </div>
-
-<!-- ════════════════════════════════
-  TITRE DE SECTION
-════════════════════════════════ -->
 <div class="slide" id="s13">
   <div class="z1" style="width:100%;max-width:980px">
     <div class="tag">Conventions Git</div>
@@ -851,77 +832,6 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
 
 <!-- ════════════════════════════════
   S7 · HISTORIQUE COMMITS
-════════════════════════════════ -->
-<div class="slide" id="s15">
-  <div class="bg-glow" style="width:350px;height:350px;background:rgba(230,57,70,.08);top:-100px;left:-100px"></div>
-  <div class="z1" style="width:100%;max-width:980px">
-    <div class="tag">Automatisation Qualité</div>
-    <h2 class="fade-up">Hook <ic style="font-size:18px">pre-push</ic> — La porte de qualité</h2>
-    <!-- PIPELINE ANIMÉ -->
-    <div id="pipeline-anim" style="display:flex;align-items:center;width:100%;max-width:980px;margin-bottom:20px;gap:0">
-
-      <div class="panim-step" data-i="0" style="--c:rgba(255,255,255,.12)">
-        <div class="panim-icon">💻</div>
-        <div class="panim-label">git push</div>
-        <div class="panim-sub">développeur</div>
-      </div>
-      <div class="panim-arr" data-i="1">→</div>
-
-      <div class="panim-step" data-i="2" style="--c:rgba(251,146,60,.25)">
-        <div class="panim-icon">🎨</div>
-        <div class="panim-label">Prettier</div>
-        <div class="panim-sub">format:check</div>
-      </div>
-      <div class="panim-arr" data-i="3">→</div>
-
-      <div class="panim-step" data-i="4" style="--c:rgba(167,139,250,.25)">
-        <div class="panim-icon">🔍</div>
-        <div class="panim-label">ESLint</div>
-        <div class="panim-sub">no-any · no-console</div>
-      </div>
-      <div class="panim-arr" data-i="5">→</div>
-
-      <div class="panim-step" data-i="6" style="--c:rgba(96,165,250,.25)">
-        <div class="panim-icon">🔷</div>
-        <div class="panim-label">TypeScript</div>
-        <div class="panim-sub">tsc --noEmit</div>
-      </div>
-      <div class="panim-arr" data-i="7">→</div>
-
-      <div class="panim-step" data-i="8" style="--c:rgba(34,211,238,.25)">
-        <div class="panim-icon">🧪</div>
-        <div class="panim-label">Vitest</div>
-        <div class="panim-sub">front + back</div>
-      </div>
-      <div class="panim-arr panim-arr-ok" data-i="9">→</div>
-
-      <div class="panim-step panim-final" data-i="10" style="--c:rgba(74,222,128,.25)">
-        <div class="panim-icon">✅</div>
-        <div class="panim-label">Push OK</div>
-        <div class="panim-sub">remote</div>
-      </div>
-
-    </div>
-    <div class="code-wrap fade-up" style="max-width:820px">
-      <div class="code-bar">
-        <div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div>
-        <span class="code-label">package.json — script "check"</span>
-      </div>
-      <div class="code-body">
-<span class="kw">"check"</span>: <span class="str">"concurrently -n format,lint,tests \\"</span>
-           <span class="str">"npm run format:check\\"</span>   <span class="dim">← Prettier vérifie tout le code</span>
-           <span class="str">"npm run lint\\"</span>          <span class="dim">← ESLint front + back en parallèle</span>
-           <span class="str">"npm run test\\""</span>         <span class="dim">← Vitest front + back en parallèle</span><br>
-<span class="dim"># .husky/pre-push — s'exécute avant chaque push</span>
-<span class="yl">npm run check</span>  <span class="dim">← un seul échec = push bloqué</span>
-      </div>
-    </div>
-    <div class="hl fade-up">Un seul test en rouge · un seul fichier mal formaté · une seule erreur TS → <strong>push impossible</strong>.<br>Du code cassé ne peut physiquement pas atteindre le remote.</div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════
-  S8 · PRETTIER + ESLINT
 ════════════════════════════════ -->
 <div class="slide" id="s18">
   <div class="bg-glow" style="width:500px;height:500px;background:rgba(34,211,238,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
@@ -1257,81 +1167,137 @@ io.<span class="kw">on</span>(<span class="str">'connection'</span>, socket => {
 </div>
 <div class="slide" id="s26">
   <style>
-    @keyframes deploy-flow{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:translateY(0)}}
-    .deploy-step{
-      display:flex;flex-direction:column;align-items:center;gap:6px;
-      padding:14px 10px;border-radius:12px;border:1px solid var(--border2);
-      background:var(--card);text-align:center;min-width:80px;
-      transition:border-color .3s,box-shadow .3s;
+    #dp-pipeline{display:flex;align-items:center;justify-content:center;gap:0;width:100%}
+    .dp-node{
+      display:flex;flex-direction:column;align-items:center;gap:10px;
+      padding:22px 18px;border-radius:20px;
+      border:2px solid rgba(255,255,255,.06);
+      background:rgba(255,255,255,.03);
+      text-align:center;min-width:100px;flex:1;max-width:130px;
+      opacity:0;transform:translateY(24px) scale(.92);
+      transition:opacity .5s ease,transform .5s ease,border-color .4s,box-shadow .4s,background .4s;
+      position:relative;
     }
-    .deploy-step.lit{border-color:rgba(74,222,128,.5);box-shadow:0 0 18px rgba(74,222,128,.15)}
-    .deploy-step .icon{font-size:26px}
-    .deploy-step .label{font-size:10px;color:var(--muted);letter-spacing:.5px;text-transform:uppercase}
-    .deploy-step .sublabel{font-size:9px;color:var(--muted);margin-top:1px}
-    .deploy-arr{font-size:18px;color:var(--border2);transition:color .3s;align-self:center;flex-shrink:0}
-    .deploy-arr.lit{color:var(--green)}
+    .dp-node.lit{
+      opacity:1;transform:translateY(0) scale(1);
+      border-color:rgba(74,222,128,.55);
+      background:rgba(74,222,128,.07);
+      box-shadow:0 0 32px rgba(74,222,128,.2),0 0 60px rgba(74,222,128,.07);
+    }
+    .dp-node.lit-final{
+      border-color:rgba(74,222,128,.9);
+      background:rgba(74,222,128,.13);
+      box-shadow:0 0 50px rgba(74,222,128,.45),0 0 100px rgba(74,222,128,.15);
+      animation:dp-pulse 1.4s ease-in-out infinite;
+    }
+    @keyframes dp-pulse{0%,100%{box-shadow:0 0 50px rgba(74,222,128,.45),0 0 100px rgba(74,222,128,.15)}50%{box-shadow:0 0 80px rgba(74,222,128,.7),0 0 140px rgba(74,222,128,.25)}}
+    .dp-node .dp-icon{font-size:clamp(32px,3.5vw,52px);line-height:1}
+    .dp-node .dp-label{font-size:clamp(10px,1vw,13px);font-weight:800;color:var(--text);letter-spacing:.5px;text-transform:uppercase}
+    .dp-node .dp-sub{font-size:clamp(9px,.85vw,11px);color:var(--muted);margin-top:2px;font-family:'Courier New',monospace}
+    .dp-beam{
+      flex:0 0 clamp(16px,2.5vw,40px);height:3px;
+      background:linear-gradient(90deg,rgba(74,222,128,0),rgba(74,222,128,.3));
+      border-radius:2px;position:relative;overflow:hidden;
+      opacity:0;transition:opacity .3s ease;
+      align-self:center;margin-bottom:32px;
+    }
+    .dp-beam.lit{opacity:1;}
+    .dp-beam.lit::after{
+      content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+      background:linear-gradient(90deg,transparent,rgba(74,222,128,1),transparent);
+      animation:beam-travel .6s ease forwards;
+    }
+    @keyframes beam-travel{0%{left:-100%}100%{left:100%}}
   </style>
 
-  <div class="bg-glow" style="width:600px;height:600px;background:rgba(74,222,128,.06);bottom:-200px;right:-100px;z-index:0"></div>
-  <div class="bg-glow" style="width:400px;height:400px;background:rgba(96,165,250,.05);top:-100px;left:-100px;z-index:0"></div>
+  <div class="bg-glow" style="width:700px;height:700px;background:rgba(74,222,128,.05);top:50%;left:50%;transform:translate(-50%,-50%);z-index:0"></div>
+  <div class="bg-glow" style="width:350px;height:350px;background:rgba(96,165,250,.05);top:-80px;left:-80px;z-index:0"></div>
 
-  <div class="z1 fade-up" style="width:100%;max-width:900px;display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,1.8vh,20px)">
+  <div class="z1" style="width:100%;max-width:1100px;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.5vh,32px)">
 
-    <div>
-      <div class="tag" style="color:var(--green);margin-bottom:6px">Infrastructure · VPS OVH</div>
-      <h2 style="font-size:clamp(18px,2vw,28px);line-height:1.2;margin-bottom:8px">
-        Déploiement ·<br><span style="color:var(--green)">Push → Production</span>
+    <!-- Header -->
+    <div style="text-align:center">
+      <div class="tag fade-up" style="color:var(--green);justify-content:center;margin-bottom:8px">Infrastructure · VPS OVH</div>
+      <h2 class="fade-up" style="font-size:clamp(24px,3vw,44px);line-height:1.1;margin-bottom:6px">
+        Push → <span style="color:var(--green)">Production</span>
       </h2>
-      <p style="font-size:clamp(12px,1.1vw,14px);color:var(--muted2);line-height:1.7">
-        On push sur <strong style="color:var(--text)">GitHub</strong>, le VPS se met à jour <strong style="color:var(--green)">automatiquement</strong>. Zéro intervention manuelle.
+      <p class="fade-up" style="font-size:clamp(12px,1.1vw,15px);color:var(--muted2)">
+        On push sur GitHub · le VPS se met à jour <strong style="color:var(--green)">automatiquement</strong> · Zéro intervention manuelle
       </p>
     </div>
 
-    <!-- Pipeline déploiement animé -->
-    <div>
-      <div style="font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:10px;text-transform:uppercase">Pipeline de déploiement</div>
-      <div id="deploy-anim" style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-        <div class="deploy-step" data-d="0"><div class="icon">💻</div><div class="label">Dev</div><div class="sublabel">git push</div></div>
-        <div class="deploy-arr" data-d="1">→</div>
-        <div class="deploy-step" data-d="2"><div class="icon">🐙</div><div class="label">GitHub</div><div class="sublabel">main branch</div></div>
-        <div class="deploy-arr" data-d="3">→</div>
-        <div class="deploy-step" data-d="4"><div class="icon">🔗</div><div class="label">Webhook</div><div class="sublabel">trigger</div></div>
-        <div class="deploy-arr" data-d="5">→</div>
-        <div class="deploy-step" data-d="6"><div class="icon">🖥️</div><div class="label">VPS OVH</div><div class="sublabel">git pull</div></div>
-        <div class="deploy-arr" data-d="7">→</div>
-        <div class="deploy-step" data-d="8"><div class="icon">🐳</div><div class="label">Docker</div><div class="sublabel">compose up</div></div>
-        <div class="deploy-arr" data-d="9">→</div>
-        <div class="deploy-step" data-d="10" style="border-color:rgba(74,222,128,.3)"><div class="icon">🚀</div><div class="label" style="color:var(--green)">Live</div><div class="sublabel">en prod</div></div>
+    <!-- Pipeline GRAND -->
+    <div id="deploy-anim" style="width:100%">
+      <div id="dp-pipeline">
+        <div class="dp-node" data-d="0">
+          <div class="dp-icon">💻</div>
+          <div class="dp-label">Dev</div>
+          <div class="dp-sub">git push</div>
+        </div>
+        <div class="dp-beam" data-d="1"></div>
+        <div class="dp-node" data-d="2">
+          <div class="dp-icon">🐙</div>
+          <div class="dp-label">GitHub</div>
+          <div class="dp-sub">main branch</div>
+        </div>
+        <div class="dp-beam" data-d="3"></div>
+        <div class="dp-node" data-d="4">
+          <div class="dp-icon">🔗</div>
+          <div class="dp-label">Webhook</div>
+          <div class="dp-sub">trigger</div>
+        </div>
+        <div class="dp-beam" data-d="5"></div>
+        <div class="dp-node" data-d="6">
+          <div class="dp-icon">🖥️</div>
+          <div class="dp-label">VPS OVH</div>
+          <div class="dp-sub">git pull</div>
+        </div>
+        <div class="dp-beam" data-d="7"></div>
+        <div class="dp-node" data-d="8">
+          <div class="dp-icon">🐳</div>
+          <div class="dp-label">Docker</div>
+          <div class="dp-sub">compose up</div>
+        </div>
+        <div class="dp-beam" data-d="9"></div>
+        <div class="dp-node" data-d="10">
+          <div class="dp-icon">🌐</div>
+          <div class="dp-label">Site en ligne</div>
+          <div class="dp-sub">marsai.lightchurch.fr</div>
+        </div>
+        <div class="dp-beam" data-d="11"></div>
+        <div class="dp-node" data-d="12">
+          <div class="dp-icon">🚀</div>
+          <div class="dp-label" style="color:var(--green)">Live !</div>
+          <div class="dp-sub" style="color:var(--green)">en prod</div>
+        </div>
       </div>
     </div>
 
-    <!-- Commandes VPS -->
-    <div class="code-wrap">
-      <div class="code-bar"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label">VPS — webhook script</span></div>
-      <div class="code-body" style="font-size:10.5px">
+    <!-- Bottom row: code + badges -->
+    <div class="fade-up" style="display:flex;gap:16px;width:100%;align-items:flex-start">
+      <div class="code-wrap" style="flex:1.2">
+        <div class="code-bar"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label">VPS — webhook script</span></div>
+        <div class="code-body" style="font-size:11px">
 <span class="cm"># déclenché par GitHub Webhook sur /deploy</span>
 cd <span class="str">/srv/marsai</span>
 git pull origin main
-docker compose down
-docker compose up -d --build
-<span class="cm"># ✓ L'app est relancée avec le nouveau code</span>
+docker compose down && docker compose up -d --build
+<span class="cm"># ✓ App relancée avec le nouveau code</span>
+        </div>
       </div>
-    </div>
-
-    <!-- Ce qu'on a appris -->
-    <div style="padding:12px 14px;border-radius:10px;border:1px solid rgba(96,165,250,.25);background:rgba(96,165,250,.05)">
-      <div style="font-size:11px;color:var(--blue);font-weight:700;letter-spacing:1px;margin-bottom:7px">🎓 CE QU'ON A APPRIS</div>
-      <div style="display:flex;gap:5px;flex-wrap:wrap">
-        <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:5px;padding:2px 8px;font-size:11px">VPS Linux</span>
-        <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:5px;padding:2px 8px;font-size:11px">Docker en prod</span>
-        <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:5px;padding:2px 8px;font-size:11px">GitHub Webhooks</span>
-        <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:5px;padding:2px 8px;font-size:11px">CI/CD manuel</span>
-        <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:5px;padding:2px 8px;font-size:11px">Nginx reverse proxy</span>
+      <div style="flex:1;padding:14px 16px;border-radius:12px;border:1px solid rgba(96,165,250,.25);background:rgba(96,165,250,.05);align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:8px">
+        <div style="font-size:11px;color:var(--blue);font-weight:800;letter-spacing:1px">🎓 CE QU'ON A APPRIS</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">VPS Linux</span>
+          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">Docker en prod</span>
+          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">GitHub Webhooks</span>
+          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">CI/CD manuel</span>
+          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">Nginx reverse proxy</span>
+        </div>
       </div>
     </div>
 
   </div>
-
 </div>
 
 <!-- ════════════════════════════════
@@ -1584,7 +1550,7 @@ Sentry.<span class="kw">init</span>({
     <p class="fade-up" style="color:var(--muted2);margin-bottom:28px;font-size:14px">Sans chacun d'entre vous, rien de tout cela n'aurait été possible.</p>
 
     <!-- Membres de l'équipe -->
-    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px">
+    <div class="fade-up" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px">
 
       <div class="person-card" style="border-color:rgba(230,57,70,.35)">
         <div class="avatar" style="border-color:rgba(230,57,70,.5);background:rgba(230,57,70,.12);color:var(--red)">S</div>
@@ -1766,9 +1732,13 @@ function goTo(n){
   // deploy animation
   const deployAnim = slides[cur].querySelector('#deploy-anim');
   if(deployAnim){
-    deployAnim.querySelectorAll('.deploy-step,.deploy-arr').forEach(el=>el.classList.remove('lit'));
+    deployAnim.querySelectorAll('.dp-node,.dp-beam').forEach(el=>el.classList.remove('lit','lit-final'));
     const items = Array.from(deployAnim.querySelectorAll('[data-d]')).sort((a,b)=>+a.dataset.d - +b.dataset.d);
-    items.forEach((el,i)=>setTimeout(()=>el.classList.add('lit'), 300 + i*250));
+    items.forEach((el,i)=>setTimeout(()=>{
+      const isFinal = i === items.length-1;
+      el.classList.add('lit');
+      if(isFinal && el.classList.contains('dp-node')) el.classList.add('lit-final');
+    }, 400 + i*320));
   }
   // pipeline animation
   const pipe = slides[cur].querySelector('#pipeline-anim');
