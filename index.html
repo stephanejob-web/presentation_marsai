@@ -365,6 +365,11 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
   S1 · COVER
 ════════════════════════════════ -->
 <div class="slide active" id="s1">
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.5;filter:brightness(0.6)">
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%, transparent 0%, var(--dark) 100%);z-index:1;opacity:0.7"></div>
+  
   <div class="pulse-ring"></div>
   <div class="pulse-ring"></div>
   <div class="pulse-ring"></div>
@@ -380,6 +385,53 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
       <span class="badge">🐬 MySQL</span>
       <span class="badge">🐳 Docker</span>
       <span class="badge">🤖 IA augmentée</span>
+    </div>
+
+    <!-- ── ACCÈS RAPIDES ── -->
+    <div class="fade-up" style="margin-top:40px;width:100%;max-width:1150px;background:rgba(255,255,255,0.02);backdrop-filter:blur(15px);border:1px solid rgba(255,255,255,0.08);padding:24px;border-radius:24px;text-align:left">
+      <div style="font-size:14px;color:var(--muted2);margin-bottom:16px;font-weight:500">
+        👋 Bonjour à toutes et à tous. Voici les accès utiles pour le projet :
+      </div>
+      
+      <div style="display:grid;grid-template-columns:repeat(4, 1fr);gap:12px">
+        
+        <!-- Présentation -->
+        <div style="background:rgba(255,255,255,0.03);padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.05)">
+          <div style="font-weight:900;color:var(--red);margin-bottom:8px;font-size:11px;letter-spacing:1px;text-transform:uppercase">🔗 Présentation</div>
+          <a href="https://stephanejob-web.github.io/presentation_marsai/" target="_blank" style="color:white;text-decoration:none;font-size:10px;word-break:break-all;line-height:1.4;opacity:0.8;display:block">GitHub Pages Link</a>
+        </div>
+
+        <!-- Application -->
+        <div style="background:rgba(255,255,255,0.03);padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.05)">
+          <div style="font-weight:900;color:var(--blue);margin-bottom:8px;font-size:11px;letter-spacing:1px;text-transform:uppercase">💻 Application</div>
+          <a href="https://marsai.lightchurch.fr/" target="_blank" style="color:white;text-decoration:none;font-size:10px;display:block;margin-bottom:8px;opacity:0.8">marsai.lightchurch.fr</a>
+          <div style="font-size:10px;background:rgba(0,0,0,0.3);padding:6px 10px;border-radius:8px;line-height:1.5">
+            <span style="color:var(--muted)">User:</span> admin@gmail.com<br>
+            <span style="color:var(--muted)">Pass:</span> azerty
+          </div>
+        </div>
+
+        <!-- Stockage -->
+        <div style="background:rgba(255,255,255,0.03);padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.05)">
+          <div style="font-weight:900;color:var(--orange);margin-bottom:8px;font-size:11px;letter-spacing:1px;text-transform:uppercase">🗄️ Stockage</div>
+          <a href="http://51.254.131.39:9101" target="_blank" style="color:white;text-decoration:none;font-size:10px;display:block;margin-bottom:8px;opacity:0.8">MinIO (S3 Replace)</a>
+          <div style="font-size:10px;background:rgba(0,0,0,0.3);padding:6px 10px;border-radius:8px;line-height:1.5">
+            <span style="color:var(--muted)">User:</span> minioadmin<br>
+            <span style="color:var(--muted)">Pass:</span> minioadmin
+          </div>
+        </div>
+
+        <!-- Monitoring -->
+        <div style="background:rgba(255,255,255,0.03);padding:14px;border-radius:14px;border:1px solid rgba(255,255,255,0.05)">
+          <div style="font-weight:900;color:var(--yellow);margin-bottom:8px;font-size:11px;letter-spacing:1px;text-transform:uppercase">📊 Monitoring</div>
+          <a href="https://marsai.lightchurch.fr/grafana" target="_blank" style="color:white;text-decoration:none;font-size:10px;display:block;margin-bottom:8px;opacity:0.8">Grafana Stats</a>
+          <div style="font-size:10px;background:rgba(0,0,0,0.3);padding:6px 10px;border-radius:8px;line-height:1.5">
+            <span style="color:var(--muted)">User:</span> admin<br>
+            <span style="color:var(--muted)">Pass:</span> marsai_grafana_2026
+          </div>
+        </div>
+
+      </div>
     </div>
     <!-- BOUTON DÉMARRER -->
     <button id="btn-start" onclick="startPresentation()" style="
@@ -477,6 +529,10 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
           <span style="font-size:13px;padding:6px 14px;border-radius:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-weight:600">Qualité</span>
           <span style="font-size:13px;padding:6px 14px;border-radius:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-weight:600">Cérémonies agile</span>
         </div>
+        
+        <a href="https://stephane.lightchurch.fr/" target="_blank" style="margin-top:32px;padding:12px 28px;border-radius:50px;background:linear-gradient(135deg, var(--red), var(--orange));color:white;text-decoration:none;font-weight:800;font-size:14px;box-shadow:0 10px 20px rgba(230,57,70,0.3);transition:transform .2s;display:inline-block" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          🔗 Voir mon portfolio
+        </a>
       </div>
       
       <!-- DEVS Grid -->
@@ -1399,6 +1455,77 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
 
 
 <!-- ════════════════════════════════
+  S23b · SWAGGER
+  ════════════════════════════════ -->
+<div class="slide" id="s23b">
+  <div class="bg-glow" style="width:600px;height:600px;background:rgba(74,222,128,.08);top:-100px;right:-100px"></div>
+  <div class="z1" style="width:100%;max-width:1100px;display:flex;flex-direction:column;gap:30px;align-items:center">
+    <div style="text-align:center">
+      <div class="tag" style="justify-content:center">Documentation Technique</div>
+      <h2 class="fade-up" style="font-size:clamp(32px,4vw,56px);margin-bottom:10px">Swagger · <span style="color:var(--green)">Zéro perte de temps</span></h2>
+      <p class="fade-up" style="color:var(--muted2);font-size:18px">Le contrat entre le Backend et le Frontend est toujours à jour.</p>
+    </div>
+
+    <div class="row fade-up" style="align-items:stretch;gap:30px">
+      <!-- MOCK SWAGGER -->
+      <div style="flex:1.4;background:#f8f9fa;border-radius:14px;border:1px solid #ddd;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,0.4);display:flex;flex-direction:column">
+        <div style="background:#85ea2d;padding:12px 20px;display:flex;align-items:center;gap:15px">
+           <div style="font-weight:900;color:#000;font-size:20px">swagger</div>
+           <div style="background:rgba(0,0,0,0.1);padding:4px 10px;border-radius:4px;font-size:11px;color:#000;font-weight:700">EXPLORE</div>
+        </div>
+        <div style="padding:20px;background:#fff;color:#333;flex:1;font-family:sans-serif">
+           <div style="font-size:13px;font-weight:700;margin-bottom:15px;color:#666">Servers: <span style="color:#2a2a2a">https://marsai.lightchurch.fr/api</span></div>
+           
+           <!-- Endpoint 1 -->
+           <div style="border:1px solid #49cc90;background:rgba(73,204,144,0.1);border-radius:4px;padding:12px;margin-bottom:12px;display:flex;align-items:center;gap:15px">
+              <span style="background:#49cc90;color:#fff;padding:5px 8px;border-radius:3px;font-size:11px;font-weight:900;min-width:55px;text-align:center">GET</span>
+              <span style="font-family:monospace;font-size:15px;font-weight:700">/films</span>
+              <span style="font-size:12px;color:#555">Récupérer la liste des films</span>
+           </div>
+
+           <!-- Endpoint 2 -->
+           <div style="border:1px solid #fca130;background:rgba(252,161,48,0.1);border-radius:4px;padding:12px;margin-bottom:12px;display:flex;align-items:center;gap:15px">
+              <span style="background:#fca130;color:#fff;padding:5px 8px;border-radius:3px;font-size:11px;font-weight:900;min-width:55px;text-align:center">POST</span>
+              <span style="font-family:monospace;font-size:15px;font-weight:700">/jury/vote</span>
+              <span style="font-size:12px;color:#555">Soumettre un vote</span>
+           </div>
+
+           <!-- Endpoint 3 -->
+           <div style="border:1px solid #49cc90;background:rgba(73,204,144,0.1);border-radius:4px;padding:12px;display:flex;align-items:center;gap:15px">
+              <span style="background:#49cc90;color:#fff;padding:5px 8px;border-radius:3px;font-size:11px;font-weight:900;min-width:55px;text-align:center">GET</span>
+              <span style="font-family:monospace;font-size:15px;font-weight:700">/stats</span>
+              <span style="font-size:12px;color:#555">Données Grafana</span>
+           </div>
+        </div>
+        <div style="background:#eee;padding:12px;text-align:center;font-size:12px;color:#777;border-top:1px solid #ddd">
+           Interactive API Console · Documentation vivante
+        </div>
+      </div>
+
+      <!-- TEXTE -->
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;justify-content:center">
+        <div class="card green" style="background:rgba(74,222,128,0.05)">
+          <div style="font-size:32px;margin-bottom:12px">📐</div>
+          <h3 style="font-size:20px">Documentation au fil de l'eau</h3>
+          <p style="font-size:14px;line-height:1.6">Chaque route est documentée par le backend lors de sa création. La doc n'est jamais obsolète.</p>
+        </div>
+        <div class="card blue" style="background:rgba(96,165,250,0.05)">
+          <div style="font-size:32px;margin-bottom:12px">🚀</div>
+          <h3 style="font-size:20px">Fluidité entre développeurs</h3>
+          <p style="font-size:14px;line-height:1.6">Le frontend possède un contrat technique immédiat. Zéro perte de temps en échanges inutiles.</p>
+        </div>
+        <div style="text-align:center;margin-top:10px">
+           <a href="https://marsai.lightchurch.fr/api/docs/" target="_blank" style="display:inline-block;padding:16px 32px;background:#49cc90;color:white;text-decoration:none;border-radius:50px;font-weight:800;font-size:15px;box-shadow:0 10px 25px rgba(73,204,144,0.4);transition:transform .2s" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+             🔗 marsai.lightchurch.fr/api/docs/
+           </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ════════════════════════════════
   S24 · FEATURES BONUS
 ════════════════════════════════ -->
 <div class="slide" id="s24" style="padding:0;justify-content:stretch;align-items:stretch;flex-direction:row">
@@ -1707,8 +1834,11 @@ docker compose up -d --build
       <div>
         <h2 style="font-size:clamp(20px,2.2vw,32px);margin:0">
           <span style="color:var(--yellow)">Grafana</span> · <span style="color:var(--red)">Sentry</span>
-          <span style="font-size:clamp(13px,1.2vw,17px);color:var(--muted2);font-weight:400;margin-left:12px">On voit tout en production</span>
         </h2>
+        <div style="font-size:clamp(13px,1.2vw,16px);color:var(--muted2);font-weight:400;margin-top:5px;line-height:1.4">
+          Statistiques avancées pour l'admin & traçage des bugs en temps réel.<br>
+          Une visibilité totale sur l'état de santé du festival.
+        </div>
       </div>
       <div style="display:flex;gap:8px">
         <span style="background:rgba(251,191,36,.12);border:1px solid rgba(251,191,36,.3);color:var(--yellow);border-radius:6px;padding:4px 12px;font-size:12px;font-weight:700">📊 Grafana</span>
@@ -1880,6 +2010,11 @@ Sentry.<span class="kw">init</span>({
       </div>
     </div>
 
+    <div class="fade-up" style="padding:0 60px 24px;text-align:center">
+      <div class="hl-g" style="margin:0 auto;font-weight:800;max-width:900px;font-size:16px">
+        ✨ Un projet extrêmement formateur : nous avons énormément appris sur la rigueur et l'observabilité technique.
+      </div>
+    </div>
   </div>
 </div>
 
@@ -1996,7 +2131,7 @@ Sentry.<span class="kw">init</span>({
 <!-- ═══════════ CHROME ═══════════ -->
 <div class="progress-bar" id="bar" style="width:4%"></div>
 <div class="dots" id="dots"></div>
-<span class="slide-counter" id="counter"><span id="counter-cur" style="color:var(--red)">01</span><span style="color:var(--muted);font-weight:400"> / </span><span id="counter-tot">29</span></span>
+<span class="slide-counter" id="counter"><span id="counter-cur" style="color:var(--red)">01</span><span style="color:var(--muted);font-weight:400"> / </span><span id="counter-tot">30</span></span>
 <button class="nav-btn" id="btn-prev" onclick="nav(-1)" title="Précédent (←)">←</button>
 <button class="nav-btn" id="btn-next" onclick="nav( 1)" title="Suivant (→)">→</button>
 <button class="nav-btn" style="right:auto;left:28px;font-size:14px" title="Plein écran (F)" onclick="document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()">⛶</button>
@@ -2009,7 +2144,7 @@ Sentry.<span class="kw">init</span>({
 </div>
 
 <script>
-const TOTAL = 29;
+const TOTAL = 30;
 
 // ── CHRONO ──
 let chronoInterval = null;
