@@ -864,6 +864,234 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
 
   </div>
 </div>
+<div class="slide" id="s13a">
+  <div class="bg-glow" style="width:600px;height:600px;background:rgba(96,165,250,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="z1" style="width:100%;max-width:900px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.5vh,32px)">
+
+    <div>
+      <div class="tag fade-up" style="color:var(--blue);justify-content:center;margin-bottom:10px">Qualité · Workflow</div>
+      <h2 class="fade-up" style="font-size:clamp(26px,3.5vw,52px);line-height:1.1">Notre workflow <span style="color:var(--blue)">qualité</span></h2>
+      <p class="fade-up" style="color:var(--muted2);font-size:clamp(13px,1.3vw,18px);margin-top:10px;max-width:700px">Avant qu'un seul commit arrive sur GitHub · le code passe par une chaîne de contrôles automatiques</p>
+    </div>
+
+    <!-- 4 étapes résumées -->
+    <div class="fade-up" style="display:flex;gap:clamp(10px,2vw,24px);flex-wrap:wrap;justify-content:center">
+      <div style="display:flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid rgba(251,191,36,.3);background:rgba(251,191,36,.06)">
+        <span style="font-size:22px">🎨</span>
+        <span style="font-weight:800;font-size:clamp(12px,1.2vw,15px);color:var(--yellow)">Prettier</span>
+      </div>
+      <div style="color:var(--muted);align-self:center;font-size:18px">→</div>
+      <div style="display:flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid rgba(230,57,70,.3);background:rgba(230,57,70,.06)">
+        <span style="font-size:22px">🔍</span>
+        <span style="font-weight:800;font-size:clamp(12px,1.2vw,15px);color:var(--red)">ESLint</span>
+      </div>
+      <div style="color:var(--muted);align-self:center;font-size:18px">→</div>
+      <div style="display:flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid rgba(96,165,250,.3);background:rgba(96,165,250,.06)">
+        <span style="font-size:22px">🔷</span>
+        <span style="font-weight:800;font-size:clamp(12px,1.2vw,15px);color:var(--blue)">TypeScript</span>
+      </div>
+      <div style="color:var(--muted);align-self:center;font-size:18px">→</div>
+      <div style="display:flex;align-items:center;gap:8px;padding:12px 18px;border-radius:12px;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.06)">
+        <span style="font-size:22px">🧪</span>
+        <span style="font-weight:800;font-size:clamp(12px,1.2vw,15px);color:var(--purple)">Vitest · 103 tests</span>
+      </div>
+    </div>
+
+    <div class="fade-up" style="padding:16px 28px;border-radius:14px;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.07)">
+      <span style="font-size:clamp(13px,1.3vw,17px);color:var(--green);font-weight:700">Si une étape échoue → le push est bloqué · aucune exception</span>
+    </div>
+
+    <div class="fade-up" style="color:var(--muted);font-size:clamp(12px,1.1vw,15px)">👉 Slide suivante · voir l'animation en direct</div>
+
+  </div>
+</div>
+<div class="slide" id="s13b">
+  <style>
+    .wf-step{
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      padding:18px 14px;border-radius:16px;
+      border:2px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);
+      text-align:center;flex:1;min-width:100px;
+      opacity:0;transform:translateY(20px);
+      transition:opacity .45s ease,transform .45s ease,border-color .4s,background .4s,box-shadow .4s;
+    }
+    .wf-step.pass{
+      opacity:1;transform:translateY(0);
+      border-color:rgba(74,222,128,.55);background:rgba(74,222,128,.08);
+      box-shadow:0 0 28px rgba(74,222,128,.2);
+    }
+    .wf-step.fail{
+      opacity:1;transform:translateY(0);
+      border-color:rgba(230,57,70,.6);background:rgba(230,57,70,.1);
+      box-shadow:0 0 28px rgba(230,57,70,.25);
+      animation:wf-shake .4s ease;
+    }
+    .wf-step.idle{opacity:1;transform:translateY(0)}
+    @keyframes wf-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+    .wf-arrow{font-size:20px;color:var(--muted);align-self:center;margin-bottom:20px;transition:color .3s;flex-shrink:0}
+    .wf-arrow.pass{color:var(--green)}
+    .wf-arrow.fail{color:var(--red)}
+    .wf-icon{font-size:clamp(28px,3vw,42px);line-height:1}
+    .wf-label{font-size:clamp(10px,.95vw,13px);font-weight:800;color:var(--text)}
+    .wf-cmd{font-size:clamp(9px,.8vw,11px);font-family:"Courier New",monospace;color:var(--muted)}
+    .wf-status{font-size:clamp(11px,1vw,14px);font-weight:900;height:18px}
+    .result-box{
+      padding:14px 28px;border-radius:14px;font-weight:900;
+      font-size:clamp(14px,1.5vw,20px);text-align:center;
+      opacity:0;transform:scale(.85);
+      transition:opacity .5s ease,transform .5s ease;
+    }
+    .result-box.show{opacity:1;transform:scale(1)}
+    .result-box.ok{border:2px solid rgba(74,222,128,.6);background:rgba(74,222,128,.12);color:var(--green)}
+    .result-box.ko{border:2px solid rgba(230,57,70,.6);background:rgba(230,57,70,.1);color:var(--red)}
+    .wf-tabs{display:flex;gap:8px;margin-bottom:4px}
+    .wf-tab{padding:6px 16px;border-radius:8px;font-size:clamp(11px,1vw,13px);font-weight:700;cursor:pointer;border:1px solid var(--border2);background:var(--card);color:var(--muted);transition:all .2s}
+    .wf-tab.active{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08);color:var(--green)}
+    .wf-tab.active-fail{border-color:rgba(230,57,70,.4);background:rgba(230,57,70,.08);color:var(--red)}
+  </style>
+
+  <div class="bg-glow" style="width:600px;height:600px;background:rgba(96,165,250,.05);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+
+  <div class="z1" style="width:100%;max-width:1050px;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2vh,24px)">
+
+    <div style="text-align:center">
+      <div class="tag fade-up" style="color:var(--blue);justify-content:center;margin-bottom:8px">Qualité · Hook pre-push</div>
+      <h2 class="fade-up" style="font-size:clamp(20px,2.8vw,38px)">Ce qui se passe quand on fait <ic style="font-size:clamp(16px,2vw,28px)">git push</ic></h2>
+    </div>
+
+    <!-- Tabs -->
+    <div class="wf-tabs fade-up">
+      <button class="wf-tab active" onclick="wfPlay('pass')">✅ Tout passe</button>
+      <button class="wf-tab" onclick="wfPlay('fail')">❌ Un test échoue</button>
+    </div>
+
+    <!-- Pipeline -->
+    <div id="wf-anim" style="display:flex;align-items:flex-start;justify-content:center;gap:clamp(4px,1vw,12px);width:100%">
+
+      <div class="wf-step idle" id="wf-0">
+        <div class="wf-icon">💻</div>
+        <div class="wf-label">git push</div>
+        <div class="wf-cmd">developer</div>
+        <div class="wf-status" id="wf-s0"></div>
+      </div>
+      <div class="wf-arrow" id="wf-a0">→</div>
+
+      <div class="wf-step" id="wf-1">
+        <div class="wf-icon">🎨</div>
+        <div class="wf-label">Prettier</div>
+        <div class="wf-cmd">format check</div>
+        <div class="wf-status" id="wf-s1"></div>
+      </div>
+      <div class="wf-arrow" id="wf-a1">→</div>
+
+      <div class="wf-step" id="wf-2">
+        <div class="wf-icon">🔍</div>
+        <div class="wf-label">ESLint</div>
+        <div class="wf-cmd">lint check</div>
+        <div class="wf-status" id="wf-s2"></div>
+      </div>
+      <div class="wf-arrow" id="wf-a2">→</div>
+
+      <div class="wf-step" id="wf-3">
+        <div class="wf-icon">🔷</div>
+        <div class="wf-label">TypeScript</div>
+        <div class="wf-cmd">tsc --noEmit</div>
+        <div class="wf-status" id="wf-s3"></div>
+      </div>
+      <div class="wf-arrow" id="wf-a3">→</div>
+
+      <div class="wf-step" id="wf-4">
+        <div class="wf-icon">🧪</div>
+        <div class="wf-label">Vitest</div>
+        <div class="wf-cmd">103 tests</div>
+        <div class="wf-status" id="wf-s4"></div>
+      </div>
+      <div class="wf-arrow" id="wf-a4">→</div>
+
+      <div class="wf-step" id="wf-5">
+        <div class="wf-icon" id="wf-final-icon">🐙</div>
+        <div class="wf-label" id="wf-final-label">GitHub</div>
+        <div class="wf-cmd" id="wf-final-cmd">push autorisé</div>
+        <div class="wf-status" id="wf-s5"></div>
+      </div>
+
+    </div>
+
+    <!-- Résultat -->
+    <div id="wf-result" class="result-box fade-up"></div>
+
+  </div>
+
+  <script>
+  (function(){
+    let wfTimer = null;
+    function wfReset(){
+      [1,2,3,4,5].forEach(i=>{
+        const el = document.getElementById('wf-'+i);
+        if(el) el.className='wf-step';
+        const s = document.getElementById('wf-s'+i);
+        if(s) s.textContent='';
+        const a = document.getElementById('wf-a'+(i-1));
+        if(a) a.className='wf-arrow';
+      });
+      const res = document.getElementById('wf-result');
+      if(res){res.className='result-box';res.textContent='';}
+      document.querySelectorAll('.wf-tab').forEach(t=>t.className='wf-tab');
+      document.querySelectorAll('.wf-tab')[0].className='wf-tab active';
+    }
+    window.wfPlay = function(mode){
+      if(wfTimer) clearTimeout(wfTimer);
+      wfReset();
+      // update tabs
+      document.querySelectorAll('.wf-tab').forEach(t=>t.className='wf-tab');
+      if(mode==='pass') document.querySelectorAll('.wf-tab')[0].className='wf-tab active';
+      else document.querySelectorAll('.wf-tab')[1].className='wf-tab active-fail';
+
+      const failAt = mode==='fail' ? 4 : 99; // fail at Vitest
+      const steps = [
+        {icon:'🎨',label:'Prettier',cmd:'format check'},
+        {icon:'🔍',label:'ESLint',cmd:'lint check'},
+        {icon:'🔷',label:'TypeScript',cmd:'tsc --noEmit'},
+        {icon:'🧪',label:'Vitest',cmd:'103 tests'},
+        {icon:'🐙',label:'GitHub',cmd:'push autorisé'},
+      ];
+      steps.forEach((s,i)=>{
+        const idx = i+1;
+        const el = document.getElementById('wf-'+idx);
+        const statusEl = document.getElementById('wf-s'+idx);
+        const arrEl = document.getElementById('wf-a'+(idx-1));
+        const delay = 400 + i*600;
+        wfTimer = setTimeout(()=>{
+          if(idx <= failAt){
+            const isFailStep = idx === failAt && mode==='fail';
+            el.className = 'wf-step ' + (isFailStep?'fail':'pass');
+            statusEl.textContent = isFailStep ? '✖' : '✔';
+            statusEl.style.color = isFailStep ? 'var(--red)' : 'var(--green)';
+            if(arrEl) arrEl.className = 'wf-arrow ' + (isFailStep?'fail':'pass');
+          }
+          // Result
+          if(idx === failAt && mode==='fail'){
+            setTimeout(()=>{
+              const res = document.getElementById('wf-result');
+              res.textContent = '🚫 Push bloqué · corrige les tests avant de pusher';
+              res.className = 'result-box ko show';
+            }, 400);
+          }
+          if(idx === 5 && mode==='pass'){
+            setTimeout(()=>{
+              const res = document.getElementById('wf-result');
+              res.textContent = '🚀 Push autorisé · code propre en prod';
+              res.className = 'result-box ok show';
+            }, 400);
+          }
+        }, delay);
+      });
+    };
+    // Auto-play on slide enter handled externally
+    document.getElementById('s13b').addEventListener('wf-enter', ()=>wfPlay('pass'));
+  })();
+  </script>
+</div>
 <div class="slide" id="s18">
   <style>
     .role-card{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px 20px;border-radius:20px;flex:1;text-align:center}
@@ -1489,7 +1717,7 @@ docker compose down && docker compose up -d --build
 <!-- ═══════════ CHROME ═══════════ -->
 <div class="progress-bar" id="bar" style="width:4%"></div>
 <div class="dots" id="dots"></div>
-<span class="slide-counter" id="counter"><span id="counter-cur" style="color:var(--red)">01</span><span style="color:var(--muted);font-weight:400"> / </span><span id="counter-tot">17</span></span>
+<span class="slide-counter" id="counter"><span id="counter-cur" style="color:var(--red)">01</span><span style="color:var(--muted);font-weight:400"> / </span><span id="counter-tot">19</span></span>
 <button class="nav-btn" id="btn-prev" onclick="nav(-1)" title="Précédent (←)">←</button>
 <button class="nav-btn" id="btn-next" onclick="nav( 1)" title="Suivant (→)">→</button>
 <button class="nav-btn" style="right:auto;left:28px;font-size:14px" title="Plein écran (F)" onclick="document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()">⛶</button>
@@ -1502,7 +1730,7 @@ docker compose down && docker compose up -d --build
 </div>
 
 <script>
-const TOTAL = 17;
+const TOTAL = 19;
 
 // ── CHRONO ──
 let chronoInterval = null;
@@ -1577,6 +1805,7 @@ function goTo(n){
     requestAnimationFrame(()=>{
       slides[cur].classList.remove(dir);
       slides[cur].classList.add('active');
+      if(slides[cur].id==='s13b' && typeof wfPlay==='function') setTimeout(()=>wfPlay('pass'),300);
     });
   });
   bar.style.width=((cur+1)/TOTAL*100)+'%';
