@@ -432,7 +432,7 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
       <div style="background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .3s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
         <div style="font-size:clamp(52px,6vw,80px);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--yellow),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent" class="count-up" data-target="6">0</div>
         <div style="font-size:clamp(14px,1.2vw,18px);font-weight:700;color:var(--text)">Développeurs</div>
-        <div style="font-size:clamp(11px,0.9vw,14px);color:var(--muted)">+ Claude · Copilot · CodeRabbit</div>
+        <div style="font-size:clamp(11px,0.8vw,13px);color:var(--muted);text-align:center;line-height:1.4">Valérie · Dylan · JD · Mickaël<br>+ CodeRabbit</div>
       </div>
       <div style="background:var(--card);border:1px solid rgba(230,57,70,.3);background:rgba(230,57,70,.05);border-radius:18px;padding:32px 20px;display:flex;flex-direction:column;align-items:center;gap:10px;transition:transform .3s" onmouseover="this.style.transform='translateY(-4px)'" onmouseout="this.style.transform='none'">
         <div style="font-size:clamp(52px,6vw,80px);font-weight:900;line-height:1;background:linear-gradient(135deg,var(--red),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent" class="count-up" data-target="3">0</div>
@@ -456,41 +456,71 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
   S2 · ÉQUIPE
 ════════════════════════════════ -->
 <div class="slide" id="s4">
-  <div class="bg-glow" style="width:300px;height:300px;background:rgba(230,57,70,.08);bottom:-50px;left:-50px"></div>
-  <div class="z1" style="width:100%;max-width:960px">
+  <!-- Glowing background elements for a more premium feel -->
+  <div class="bg-glow" style="width:600px;height:600px;background:radial-gradient(circle, rgba(230,57,70,0.18) 0%, transparent 70%);bottom:-150px;left:-150px;border-radius:50%"></div>
+  <div class="bg-glow" style="width:400px;height:400px;background:radial-gradient(circle, rgba(96,165,250,0.12) 0%, transparent 70%);top:0;right:-100px;border-radius:50%"></div>
+  
+  <div class="z1" style="width:94%;max-width:1350px;display:flex;flex-direction:column;gap:20px;justify-content:center">
     <div class="tag stagger" style="justify-content:flex-start"><span>L'Équipe</span></div>
-    <h2 class="fade-up" style="text-align:left;margin-bottom:24px">Bonjour, je suis <span style="color:var(--red)">Stéphane</span></h2>
-    <div class="row stagger" style="flex-wrap:nowrap;align-items:stretch">
-      <!-- SM -->
-      <div class="card accent" style="flex:0 0 200px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center">
-        <div style="font-size:42px;margin-bottom:10px">👑</div>
-        <h3 style="font-size:20px;color:var(--red);margin-bottom:4px">Stéphane</h3>
-        <p style="color:var(--muted2);font-size:12px">Scrum Master</p>
-        <p style="margin-top:10px;font-size:11.5px;color:var(--muted);line-height:1.6">Organisation · Branches · Qualité · Cérémonies agile</p>
+    <h2 class="fade-up" style="text-align:left;margin-bottom:40px;font-size:clamp(38px,5vw,72px)">Bonjour, je suis <span style="background:linear-gradient(135deg, var(--red), var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent">Stéphane</span></h2>
+    
+    <div class="row stagger" style="flex-wrap:nowrap;align-items:stretch;gap:40px">
+      <!-- SM Highlight Card -->
+      <div class="card accent" style="flex:0 0 400px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 32px;border-radius:28px;background:linear-gradient(145deg, rgba(230,57,70,0.08), rgba(0,0,0,0.5));box-shadow:0 15px 45px rgba(0,0,0,0.6);border:1px solid rgba(230,57,70,0.4);position:relative;overflow:hidden">
+        <div style="position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg, var(--red), var(--orange))"></div>
+        <div style="width:110px;height:110px;border-radius:50%;background:rgba(230,57,70,0.2);display:flex;align-items:center;justify-content:center;font-size:56px;margin-bottom:24px;box-shadow:0 0 30px rgba(230,57,70,0.5);border:1px solid rgba(230,57,70,0.5)">👑</div>
+        <h3 style="font-size:36px;color:white;margin-bottom:8px;font-weight:900">Stéphane</h3>
+        <p style="color:var(--red);font-size:18px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px">Scrum Master</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center">
+          <span style="font-size:13px;padding:6px 14px;border-radius:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-weight:600">Organisation</span>
+          <span style="font-size:13px;padding:6px 14px;border-radius:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-weight:600">Branches</span>
+          <span style="font-size:13px;padding:6px 14px;border-radius:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-weight:600">Qualité</span>
+          <span style="font-size:13px;padding:6px 14px;border-radius:14px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:var(--text);font-weight:600">Cérémonies agile</span>
+        </div>
       </div>
-      <!-- DEVS -->
-      <div style="display:flex;flex-direction:column;gap:12px;flex:1">
-        <p style="font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;font-weight:700">Développeurs · dont je suis fier</p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;flex:1">
-          <div class="card" style="text-align:center;padding:16px">
-            <div style="font-size:28px;margin-bottom:6px">🧑‍💻</div>
-            <h3 style="font-size:15px">Valérie</h3>
-            <p style="font-size:11px">Développeuse</p>
+      
+      <!-- DEVS Grid -->
+      <div style="display:flex;flex-direction:column;gap:24px;flex:1;justify-content:center">
+        <div style="display:flex;align-items:center;gap:16px">
+          <p style="font-size:16px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;font-weight:900">L'équipe technique dont je suis fier</p>
+          <div style="flex:1;height:1px;background:linear-gradient(90deg, rgba(255,255,255,0.15), transparent)"></div>
+        </div>
+        
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;flex:1">
+          <!-- Valérie -->
+          <div class="card blue" style="display:flex;align-items:center;gap:24px;padding:32px;border-radius:20px;background:linear-gradient(145deg, rgba(96,165,250,0.08), rgba(0,0,0,0.4))">
+            <div style="width:70px;height:70px;border-radius:16px;background:rgba(96,165,250,0.2);display:flex;align-items:center;justify-content:center;font-size:36px;border:1px solid rgba(96,165,250,0.4)">👩‍💻</div>
+            <div>
+              <h3 style="font-size:24px;margin-bottom:4px;color:white;font-weight:800">Valérie</h3>
+              <p style="font-size:16px;color:var(--blue);font-weight:700">Développeuse</p>
+            </div>
           </div>
-          <div class="card" style="text-align:center;padding:16px">
-            <div style="font-size:28px;margin-bottom:6px">🧑‍💻</div>
-            <h3 style="font-size:15px">Dylan</h3>
-            <p style="font-size:11px">Développeur</p>
+          
+          <!-- Dylan -->
+          <div class="card green" style="display:flex;align-items:center;gap:24px;padding:32px;border-radius:20px;background:linear-gradient(145deg, rgba(74,222,128,0.08), rgba(0,0,0,0.4))">
+            <div style="width:70px;height:70px;border-radius:16px;background:rgba(74,222,128,0.2);display:flex;align-items:center;justify-content:center;font-size:36px;border:1px solid rgba(74,222,128,0.4)">👨‍💻</div>
+            <div>
+              <h3 style="font-size:24px;margin-bottom:4px;color:white;font-weight:800">Dylan</h3>
+              <p style="font-size:16px;color:var(--green);font-weight:700">Développeur</p>
+            </div>
           </div>
-          <div class="card" style="text-align:center;padding:16px">
-            <div style="font-size:28px;margin-bottom:6px">🧑‍💻</div>
-            <h3 style="font-size:15px">Jean-Denis</h3>
-            <p style="font-size:11px">Développeur</p>
+          
+          <!-- Jean-Denis -->
+          <div class="card purple" style="display:flex;align-items:center;gap:24px;padding:32px;border-radius:20px;background:linear-gradient(145deg, rgba(167,139,250,0.08), rgba(0,0,0,0.4))">
+            <div style="width:70px;height:70px;border-radius:16px;background:rgba(167,139,250,0.2);display:flex;align-items:center;justify-content:center;font-size:36px;border:1px solid rgba(167,139,250,0.4)">👨‍💻</div>
+            <div>
+              <h3 style="font-size:24px;margin-bottom:4px;color:white;font-weight:800">Jean-Denis</h3>
+              <p style="font-size:16px;color:var(--purple);font-weight:700">Développeur</p>
+            </div>
           </div>
-          <div class="card" style="text-align:center;padding:16px">
-            <div style="font-size:28px;margin-bottom:6px">🧑‍💻</div>
-            <h3 style="font-size:15px">Mickaël</h3>
-            <p style="font-size:11px">Développeur</p>
+          
+          <!-- Mickaël -->
+          <div class="card accent" style="display:flex;align-items:center;gap:24px;padding:32px;border-radius:20px;background:linear-gradient(145deg, rgba(230,57,70,0.08), rgba(0,0,0,0.4))">
+            <div style="width:70px;height:70px;border-radius:16px;background:rgba(230,57,70,0.2);display:flex;align-items:center;justify-content:center;font-size:36px;border:1px solid rgba(230,57,70,0.4)">👨‍💻</div>
+            <div>
+              <h3 style="font-size:24px;margin-bottom:4px;color:white;font-weight:800">Mickaël</h3>
+              <p style="font-size:16px;color:var(--red);font-weight:700">Développeur</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1228,7 +1258,7 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
     <div style="font-size:clamp(48px,6vw,80px);margin-bottom:20px;animation:float 2.5s ease-in-out infinite">🚨</div>
     <div style="font-size:clamp(32px,4vw,56px);font-weight:900;color:var(--red);letter-spacing:-1px;line-height:1.1">Gestion de crise</div>
     <div style="width:60px;height:3px;background:var(--red);border-radius:2px;margin:18px auto"></div>
-    <div style="font-size:clamp(14px,1.4vw,20px);color:var(--muted2);margin-top:8px">AWS S3 tombe la veille · On se retourne</div>
+    <div style="font-size:clamp(14px,1.4vw,20px);color:var(--muted2);margin-top:8px">AWS S3 tombe · On se retourne</div>
   </div>
 </div>
 <!-- ════════════════════════════════
@@ -1244,7 +1274,6 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
         <div style="font-size:32px;margin-bottom:10px">🔥</div>
         <h3 style="color:var(--red)">Le problème</h3>
         <p style="line-height:1.9">
-          La veille de la présentation.<br>
           Le bucket <strong>AWS S3</strong> ne répond plus.<br><br>
           <span style="color:#fca5a5">● Upload des vidéos de films : HS</span><br>
           <span style="color:#fca5a5">● Lecture des fichiers stockés : HS</span><br>
@@ -1281,21 +1310,16 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
         </div>
       </div>
     </div>
-    <div class="row fade-up" style="gap:12px">
-      <div class="card" style="flex:1;text-align:center;border-color:rgba(251,191,36,.3);background:rgba(251,191,36,.05)">
-        <div style="font-size:22px;margin-bottom:6px">💡</div>
-        <h3 style="color:var(--yellow)">Ce que ça prouve</h3>
-        <p>Docker nous a sauvés. Sans conteneurs, migrer vers une autre solution de stockage aurait pris des jours.</p>
-      </div>
-      <div class="card" style="flex:1;text-align:center;border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.05)">
-        <div style="font-size:22px;margin-bottom:6px">🔄</div>
-        <h3 style="color:var(--green)">Compatibilité totale</h3>
-        <p>Même interface S3. Variables d'env changées. <strong>Zéro ligne de code modifiée</strong> dans l'application.</p>
-      </div>
-      <div class="card" style="flex:1;text-align:center">
-        <div style="font-size:22px;margin-bottom:6px">🏁</div>
-        <h3>Résultat</h3>
-        <p>Présentation <strong>livrée à temps</strong>. L'équipe s'est retournée. On a présenté quelque chose de fonctionnel.</p>
+    <div class="row fade-up" style="justify-content:center;margin-top:20px">
+      <div class="card accent" style="width:100%;max-width:860px;text-align:center;padding:40px;border-radius:24px;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3)">
+        <div style="font-size:48px;margin-bottom:16px">🤝</div>
+        <h3 style="font-size:28px;color:white;margin-bottom:12px">On a trouvé une solution collective !</h3>
+        <p style="font-size:18px;line-height:1.7;color:var(--text)">
+          Grâce à notre socle technique solide et à la réactivité de chacun, nous avons pu pivoter sans sacrifier le projet.<br><br>
+          <span style="font-size:20px;font-weight:800;background:linear-gradient(135deg, var(--red), var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent">
+            Merci à toute l'équipe et à notre formateur pour l'accompagnement !
+          </span>
+        </p>
       </div>
     </div>
   </div>
@@ -1305,45 +1329,69 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
   S14 · BILAN FINAL
 ════════════════════════════════ -->
 <div class="slide" id="s23">
-  <div class="pulse-ring" style="border-color:rgba(96,165,250,.08)"></div>
-  <div class="pulse-ring" style="border-color:rgba(96,165,250,.04)"></div>
-  <div class="z1" style="text-align:center;width:100%;max-width:900px">
-    <div class="rocket">🚀</div>
-    <div class="tag fade-up" style="justify-content:center">Bilan</div>
-    <div class="final-title fade-up">Une chaîne de qualité<br>bout-en-bout</div>
-    <div class="row fade-up" style="margin-top:24px;max-width:900px">
-      <div class="card" style="text-align:center">
-        <div style="font-size:24px;margin-bottom:8px">📋</div>
-        <h3>Trello</h3>
-        <p>Chaque tâche tracée du ticket au merge</p>
+  <div class="bg-glow" style="width:600px;height:600px;background:rgba(74,222,128,.1);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  
+  <div class="z1" style="width:100%;max-width:1200px;text-align:center">
+    <div class="tag fade-up" style="justify-content:center">Bilan Qualité</div>
+    <h2 class="fade-up" style="margin-bottom:50px;font-size:clamp(32px,4vw,56px)">Une chaîne de qualité <span style="color:var(--green)">bout-en-bout</span></h2>
+    
+    <div id="pipeline-anim" style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:nowrap;width:100%;margin-bottom:60px">
+      
+      <!-- STEP 1 -->
+      <div class="panim-step" data-i="0" style="--c:rgba(96,165,250,0.15)">
+        <div class="panim-icon">📋</div>
+        <div class="panim-label">Trello</div>
+        <div class="panim-sub">Tâches tracées</div>
       </div>
-      <div class="card" style="text-align:center">
-        <div style="font-size:24px;margin-bottom:8px">✍️</div>
-        <h3>CommitLint</h3>
-        <p>Historique Git lisible et standardisé</p>
+      
+      <div class="panim-arr" data-i="1">→</div>
+      
+      <!-- STEP 2 -->
+      <div class="panim-step" data-i="2" style="--c:rgba(167,139,250,0.15)">
+        <div class="panim-icon">✍️</div>
+        <div class="panim-label">CommitLint</div>
+        <div class="panim-sub">Historique propre</div>
       </div>
-      <div class="card" style="text-align:center">
-        <div style="font-size:24px;margin-bottom:8px">🤖</div>
-        <h3>IA cadrée</h3>
-        <p>Prompts partagés · code homogène</p>
+      
+      <div class="panim-arr" data-i="3">→</div>
+      
+      <!-- STEP 3 -->
+      <div class="panim-step" data-i="4" style="--c:rgba(251,191,36,0.15)">
+        <div class="panim-icon">🤖</div>
+        <div class="panim-label">IA cadrée</div>
+        <div class="panim-sub">Code homogène</div>
       </div>
-      <div class="card" style="text-align:center">
-        <div style="font-size:24px;margin-bottom:8px">🔒</div>
-        <h3>pre-push</h3>
-        <p>Prettier + ESLint + Tests bloquants</p>
+      
+      <div class="panim-arr" data-i="5">→</div>
+      
+      <!-- STEP 4 -->
+      <div class="panim-step" data-i="6" style="--c:rgba(230,57,70,0.15)">
+        <div class="panim-icon">🔒</div>
+        <div class="panim-label">pre-push</div>
+        <div class="panim-sub">Lints & Tests</div>
       </div>
-      <div class="card" style="text-align:center">
-        <div style="font-size:24px;margin-bottom:8px">🧪</div>
-        <h3>Tests</h3>
-        <p>103 tests · 17 fichiers · front + back</p>
+      
+      <div class="panim-arr" data-i="7">→</div>
+      
+      <!-- STEP 5 -->
+      <div class="panim-step" data-i="8" style="--c:rgba(74,222,128,0.15)">
+        <div class="panim-icon">🧪</div>
+        <div class="panim-label">Tests</div>
+        <div class="panim-sub">103 tests passés</div>
       </div>
-      <div class="card" style="text-align:center">
-        <div style="font-size:24px;margin-bottom:8px">👁️</div>
-        <h3>CodeRabbit</h3>
-        <p>Review IA systématique sur chaque PR</p>
+      
+      <div class="panim-arr" data-i="9">→</div>
+      
+      <!-- STEP 6 -->
+      <div class="panim-step panim-final" data-i="10" style="--c:rgba(34,197,94,0.2)">
+        <div class="panim-icon">👁️</div>
+        <div class="panim-label">CodeRabbit</div>
+        <div class="panim-sub">Review IA PR</div>
       </div>
+      
     </div>
-    <div class="hl-g fade-up" style="margin-top:18px;font-size:14px">
+    
+    <div class="hl-g fade-up" style="margin-top:40px;max-width:1100px;font-size:clamp(15px,1.2vw,19px);font-weight:800;padding:20px 30px">
       Chaque commit est propre · Chaque push est vérifié · Chaque PR est reviewée · Chaque merge est validé
     </div>
   </div>
