@@ -772,38 +772,21 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
 ════════════════════════════════ -->
 <div class="slide" id="s7">
   <div class="bg-glow" style="width:500px;height:500px;background:rgba(96,165,250,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-  <div class="z1" style="width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.5vh,30px)">
+  <div class="z1" style="width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3vh,38px)">
 
     <div style="text-align:center">
-      <div class="tag fade-up" style="color:var(--blue);justify-content:center;margin-bottom:8px">Choix technique</div>
-      <h2 class="fade-up" style="font-size:clamp(22px,3vw,42px)">Pourquoi <span style="color:var(--blue)">TypeScript</span> · pas JavaScript ?</h2>
-      <p class="fade-up" style="color:var(--muted2);font-size:clamp(12px,1.1vw,15px);margin-top:6px">6 devs · un seul contrat · zéro ambiguïté</p>
+      <div class="tag fade-up" style="color:var(--blue);justify-content:center;margin-bottom:12px">Choix technique</div>
+      <h2 class="fade-up" style="font-size:clamp(24px,3.2vw,46px)">Pourquoi <span style="color:var(--blue)">TypeScript</span> · pas JavaScript ?</h2>
+      <p class="fade-up" style="font-size:clamp(15px,1.5vw,21px);color:var(--muted2);margin-top:14px;line-height:1.6;max-width:720px">
+        TypeScript impose un <strong style="color:var(--blue)">contrat de code partagé</strong> entre 6 développeurs — les erreurs sont détectées <strong style="color:var(--green)">à la compilation</strong>, jamais en production.
+      </p>
     </div>
 
-    <!-- 3 raisons -->
-    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:100%">
-      <div style="padding:22px;border-radius:16px;border:1px solid rgba(96,165,250,.3);background:rgba(96,165,250,.06);text-align:center">
-        <div style="font-size:clamp(32px,4vw,52px);margin-bottom:10px">🔷</div>
-        <div style="font-weight:900;color:var(--blue);font-size:clamp(13px,1.3vw,17px);margin-bottom:6px">Contrat commun</div>
-        <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2);line-height:1.6">6 devs = 6 styles sans types. TS impose les mêmes interfaces pour tout le monde.</div>
-      </div>
-      <div style="padding:22px;border-radius:16px;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.06);text-align:center">
-        <div style="font-size:clamp(32px,4vw,52px);margin-bottom:10px">🛡️</div>
-        <div style="font-weight:900;color:var(--purple);font-size:clamp(13px,1.3vw,17px);margin-bottom:6px">Bug en éditeur</div>
-        <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2);line-height:1.6">JS → bug en prod devant l'utilisateur. TS → erreur rouge immédiate avant d'exécuter.</div>
-      </div>
-      <div style="padding:22px;border-radius:16px;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.06);text-align:center">
-        <div style="font-size:clamp(32px,4vw,52px);margin-bottom:10px">⚡</div>
-        <div style="font-weight:900;color:var(--green);font-size:clamp(13px,1.3vw,17px);margin-bottom:6px">Refactoring sûr</div>
-        <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2);line-height:1.6">Renommer une prop → le compilo liste tout ce qui casse. Impossible d'en oublier.</div>
-      </div>
-    </div>
-
-    <!-- Comparaison mini code -->
-    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%">
+    <!-- Comparaison code -->
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%">
       <div class="code-wrap" style="border-color:rgba(230,57,70,.3)">
         <div class="code-bar" style="background:rgba(230,57,70,.15)"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label" style="color:var(--red)">❌ JavaScript — bug silencieux</span></div>
-        <div class="code-body" style="font-size:11px">
+        <div class="code-body" style="font-size:clamp(11px,1vw,13px)">
 <span class="kw">function</span> <span class="fn">scoreFilm</span>(film, note) {
   <span class="kw">return</span> film.titre + <span class="str">" : "</span> + note.valeur
 }
@@ -813,12 +796,12 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
       </div>
       <div class="code-wrap" style="border-color:rgba(74,222,128,.3)">
         <div class="code-bar" style="background:rgba(74,222,128,.1)"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label" style="color:var(--green)">✅ TypeScript — erreur immédiate</span></div>
-        <div class="code-body" style="font-size:11px">
+        <div class="code-body" style="font-size:clamp(11px,1vw,13px)">
 <span class="kw">function</span> <span class="fn">scoreFilm</span>(film: <span class="bl">Film</span>, note: <span class="bl">Note</span>): <span class="bl">string</span> {
   <span class="kw">return</span> <span class="str">`<span style="color:#e2e8f0">${</span>film.titre<span style="color:#e2e8f0">}</span> : <span style="color:#e2e8f0">${</span>note.valeur<span style="color:#e2e8f0">}</span>/10`</span>
 }
 scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
-<span class="cm">// ✖ Erreur : title ≠ titre · 8 ≠ Note ✅</span>
+<span class="cm">// ✖ Erreur : title ≠ titre · 8 ≠ Note</span>
         </div>
       </div>
     </div>
