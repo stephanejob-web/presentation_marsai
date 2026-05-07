@@ -970,6 +970,7 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
     .wf-icon{font-size:clamp(28px,3vw,42px);line-height:1}
     .wf-label{font-size:clamp(10px,.95vw,13px);font-weight:800;color:var(--text)}
     .wf-cmd{font-size:clamp(9px,.8vw,11px);font-family:"Courier New",monospace;color:var(--muted)}
+    .wf-desc{font-size:clamp(9px,.8vw,11px);color:var(--muted2);font-style:italic;line-height:1.4;margin-top:2px}
     .wf-status{font-size:clamp(11px,1vw,14px);font-weight:900;height:18px}
     .result-box{
       padding:14px 28px;border-radius:14px;font-weight:900;
@@ -1019,6 +1020,7 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
         <div class="wf-icon">🎨</div>
         <div class="wf-label">Prettier</div>
         <div class="wf-cmd">format check</div>
+        <div class="wf-desc">indentation · virgules<br>guillemets · espaces</div>
         <div class="wf-status" id="wf-s1"></div>
       </div>
       <div class="wf-arrow" id="wf-a1">→</div>
@@ -1027,6 +1029,7 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
         <div class="wf-icon">🔍</div>
         <div class="wf-label">ESLint</div>
         <div class="wf-cmd">lint check</div>
+        <div class="wf-desc">variables inutilisées<br>bugs · bad practices</div>
         <div class="wf-status" id="wf-s2"></div>
       </div>
       <div class="wf-arrow" id="wf-a2">→</div>
@@ -1035,6 +1038,7 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
         <div class="wf-icon">🔷</div>
         <div class="wf-label">TypeScript</div>
         <div class="wf-cmd">tsc --noEmit</div>
+        <div class="wf-desc">types corrects<br>aucune erreur de compile</div>
         <div class="wf-status" id="wf-s3"></div>
       </div>
       <div class="wf-arrow" id="wf-a3">→</div>
@@ -1043,6 +1047,7 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
         <div class="wf-icon">🧪</div>
         <div class="wf-label">Vitest</div>
         <div class="wf-cmd">103 tests</div>
+        <div class="wf-desc">aucune régression<br>comportement validé</div>
         <div class="wf-status" id="wf-s4"></div>
       </div>
       <div class="wf-arrow" id="wf-a4">→</div>
@@ -1051,6 +1056,7 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
         <div class="wf-icon">🐙</div>
         <div class="wf-label">GitHub</div>
         <div class="wf-cmd">push autorisé</div>
+        <div class="wf-desc">code validé<br>push accepté</div>
         <div class="wf-status" id="wf-s5"></div>
       </div>
       <div class="wf-arrow" id="wf-a5">→</div>
@@ -1059,6 +1065,7 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
         <div class="wf-icon">🤖</div>
         <div class="wf-label">CodeRabbit</div>
         <div class="wf-cmd">review PR</div>
+        <div class="wf-desc">bugs · sécurité<br>duplication · qualité</div>
         <div class="wf-status" id="wf-s6"></div>
       </div>
 
