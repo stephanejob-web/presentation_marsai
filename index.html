@@ -1012,9 +1012,12 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
     </div>
 
     <!-- Tabs -->
-    <div class="wf-tabs fade-up">
-      <button class="wf-tab active" onclick="wfPlay('pass')">✅ Tout passe</button>
-      <button class="wf-tab" onclick="wfPlay('fail')">❌ Un test échoue</button>
+    <div class="wf-tabs fade-up" style="flex-wrap:wrap">
+      <button class="wf-tab active"  onclick="wfPlay('pass')">✅ Tout passe</button>
+      <button class="wf-tab"         onclick="wfPlay('fail',1)">❌ Prettier</button>
+      <button class="wf-tab"         onclick="wfPlay('fail',2)">❌ ESLint</button>
+      <button class="wf-tab"         onclick="wfPlay('fail',3)">❌ TypeScript</button>
+      <button class="wf-tab"         onclick="wfPlay('fail',4)">❌ Vitest</button>
     </div>
 
     <!-- Pipeline -->
@@ -1099,15 +1102,21 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
       document.querySelectorAll('.wf-tab').forEach(t=>t.className='wf-tab');
       document.querySelectorAll('.wf-tab')[0].className='wf-tab active';
     }
-    window.wfPlay = function(mode){
+    const failMsgs = {
+      1: '🚫 Push bloqué · formatage incorrect — corrige avec Prettier',
+      2: '🚫 Push bloqué · erreur de lint — corrige les règles ESLint',
+      3: '🚫 Push bloqué · erreur TypeScript — tsc refuse de compiler',
+      4: '🚫 Push bloqué · tests échoués — corrige avant de pusher',
+    };
+    window.wfPlay = function(mode, failStep){
       if(wfTimer) clearTimeout(wfTimer);
       wfReset();
-      // update tabs
-      document.querySelectorAll('.wf-tab').forEach(t=>t.className='wf-tab');
-      if(mode==='pass') document.querySelectorAll('.wf-tab')[0].className='wf-tab active';
-      else document.querySelectorAll('.wf-tab')[1].className='wf-tab active-fail';
+      const tabs = document.querySelectorAll('.wf-tab');
+      tabs.forEach(t=>t.className='wf-tab');
+      if(mode==='pass') tabs[0].className='wf-tab active';
+      else tabs[failStep].className='wf-tab active-fail';
 
-      const failAt = mode==='fail' ? 4 : 99; // fail at Vitest
+      const failAt = mode==='fail' ? failStep : 99;
       const steps = [
         {icon:'🎨',label:'Prettier',cmd:'format check'},
         {icon:'🔍',label:'ESLint',cmd:'lint check'},
@@ -1130,18 +1139,17 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
             statusEl.style.color = isFailStep ? 'var(--red)' : 'var(--green)';
             if(arrEl) arrEl.className = 'wf-arrow ' + (isFailStep?'fail':'pass');
           }
-          // Result
           if(idx === failAt && mode==='fail'){
             setTimeout(()=>{
               const res = document.getElementById('wf-result');
-              res.textContent = '🚫 Push bloqué · corrige les tests avant de pusher';
+              res.textContent = failMsgs[failAt];
               res.className = 'result-box ko show';
             }, 400);
           }
           if(idx === 6 && mode==='pass'){
             setTimeout(()=>{
               const res = document.getElementById('wf-result');
-              res.textContent = '🚀 Code en prod · vérifié par les tests ET par CodeRabbit';
+              res.textContent = '🚀 Code en prod · vérifié par les outils ET par CodeRabbit';
               res.className = 'result-box ok show';
             }, 400);
           }
