@@ -1163,141 +1163,66 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
 </div>
 <div class="slide" id="s18">
   <style>
-    .ia-card{display:flex;flex-direction:column;align-items:center;gap:14px;padding:32px 28px;border-radius:24px;text-align:center;flex:1;max-width:280px;position:relative}
-    .ia-task{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:10px;font-size:clamp(11px,1vw,14px);font-weight:700;width:100%}
-    .ia-bridge{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:0 8px}
-    @keyframes ia-flow-r{0%,100%{opacity:.4;transform:translateX(-4px)}50%{opacity:1;transform:translateX(4px)}}
-    @keyframes ia-flow-l{0%,100%{opacity:.4;transform:translateX(4px)}50%{opacity:1;transform:translateX(-4px)}}
-    .arr-r{animation:ia-flow-r 1.6s ease-in-out infinite}
-    .arr-l{animation:ia-flow-l 1.6s ease-in-out infinite .8s}
+    .ia2-col{display:flex;flex-direction:column;gap:12px;flex:1;max-width:340px}
+    .ia2-col-head{display:flex;align-items:center;gap:12px;margin-bottom:4px}
+    .ia2-pill{padding:10px 18px;border-radius:12px;font-size:clamp(13px,1.2vw,17px);font-weight:700;display:flex;align-items:center;gap:8px}
+    .ia2-sep{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--muted2);font-size:13px;font-weight:700;letter-spacing:.5px;padding:0 8px}
+    .ia2-sep-line{width:1px;height:40px;background:rgba(255,255,255,.1)}
   </style>
 
-  <div class="bg-glow" style="width:700px;height:700px;background:rgba(34,211,238,.05);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="bg-glow" style="width:600px;height:600px;background:rgba(34,211,238,.04);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
 
-  <div class="z1" style="width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.8vh,36px)">
+  <div class="z1" style="width:100%;max-width:860px;display:flex;flex-direction:column;align-items:center;gap:clamp(20px,3vh,40px)">
 
     <div style="text-align:center">
-      <div class="tag fade-up" style="color:var(--cyan);justify-content:center;margin-bottom:8px">IA Augmentée</div>
-      <h2 class="fade-up" style="font-size:clamp(22px,3vw,44px)">On dirige l'IA · <span style="color:var(--cyan)">elle ne nous remplace pas</span></h2>
+      <div class="tag fade-up" style="color:var(--cyan);justify-content:center;margin-bottom:10px">IA Augmentée</div>
+      <h2 class="fade-up" style="font-size:clamp(24px,3.2vw,48px);line-height:1.2">L'IA s'occupait des tâches répétitives<br><span style="color:var(--cyan)">nous gardions le contrôle</span></h2>
     </div>
 
-    <div class="fade-up" style="display:flex;align-items:center;justify-content:center;gap:clamp(12px,2vw,28px);width:100%">
+    <div class="fade-up" style="display:flex;align-items:center;justify-content:center;gap:clamp(16px,2.5vw,32px);width:100%">
 
-      <!-- NOUS -->
-      <div class="ia-card" style="border:2px solid rgba(230,57,70,.4);background:linear-gradient(145deg,rgba(230,57,70,.1),rgba(230,57,70,.03))">
-        <div style="width:80px;height:80px;border-radius:50%;background:rgba(230,57,70,.15);border:2px solid rgba(230,57,70,.4);display:flex;align-items:center;justify-content:center;font-size:clamp(36px,4.5vw,52px)">🧑‍💻</div>
-        <div style="font-weight:900;font-size:clamp(18px,2vw,26px);color:var(--red)">Nous</div>
-        <div style="display:flex;flex-direction:column;gap:6px;width:100%">
-          <div class="ia-task" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.25);color:#fca5a5">🏗️ Architecture</div>
-          <div class="ia-task" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.25);color:#fca5a5">✅ Review PR</div>
-          <div class="ia-task" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.25);color:#fca5a5">🎯 Décisions</div>
-          <div class="ia-task" style="background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.25);color:#fca5a5">📋 Conventions</div>
+      <!-- L'IA -->
+      <div class="ia2-col">
+        <div class="ia2-col-head">
+          <div style="font-size:clamp(28px,3.5vw,44px)">🤖</div>
+          <div>
+            <div style="font-weight:900;font-size:clamp(16px,1.8vw,24px);color:var(--cyan)">L'IA s'en charge</div>
+            <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2)">tâches répétitives</div>
+          </div>
         </div>
+        <div class="ia2-pill" style="background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3);color:#67e8f9">⚡ Boilerplate</div>
+        <div class="ia2-pill" style="background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3);color:#67e8f9">🧪 Tests unitaires</div>
+        <div class="ia2-pill" style="background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3);color:#67e8f9">🔄 Refactoring</div>
+        <div class="ia2-pill" style="background:rgba(34,211,238,.12);border:1px solid rgba(34,211,238,.3);color:#67e8f9">📝 Documentation</div>
       </div>
 
-      <!-- Bridge -->
-      <div class="ia-bridge">
-        <div style="display:flex;align-items:center;gap:6px">
-          <div class="arr-r" style="font-size:clamp(22px,2.8vw,36px);color:var(--cyan)">→</div>
-        </div>
-        <div style="padding:10px 16px;border-radius:12px;border:1px solid rgba(34,211,238,.3);background:rgba(34,211,238,.07);text-align:center">
-          <div style="font-size:clamp(9px,.85vw,11px);color:var(--cyan);font-weight:700;letter-spacing:.5px">DONNE LES RÈGLES</div>
-          <div style="font-size:clamp(9px,.85vw,11px);color:var(--muted2);margin-top:2px">conventions.md</div>
-        </div>
-        <div style="padding:10px 16px;border-radius:12px;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.07);text-align:center">
-          <div style="font-size:clamp(9px,.85vw,11px);color:var(--purple);font-weight:700;letter-spacing:.5px">EXÉCUTE LES TÂCHES</div>
-          <div style="font-size:clamp(9px,.85vw,11px);color:var(--muted2);margin-top:2px">code · tests · docs</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:6px">
-          <div class="arr-l" style="font-size:clamp(22px,2.8vw,36px);color:var(--purple)">←</div>
-        </div>
+      <!-- Séparateur -->
+      <div class="ia2-sep">
+        <div class="ia2-sep-line"></div>
+        <div style="padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);font-size:clamp(9px,.85vw,11px);text-align:center;white-space:nowrap">mais c'est<br>nous qui<br>décidions</div>
+        <div class="ia2-sep-line"></div>
       </div>
 
-      <!-- IA -->
-      <div class="ia-card" style="border:2px solid rgba(34,211,238,.4);background:linear-gradient(145deg,rgba(34,211,238,.1),rgba(34,211,238,.03))">
-        <div style="width:80px;height:80px;border-radius:50%;background:rgba(34,211,238,.15);border:2px solid rgba(34,211,238,.4);display:flex;align-items:center;justify-content:center;font-size:clamp(36px,4.5vw,52px);animation:float 3s ease-in-out infinite">🤖</div>
-        <div style="font-weight:900;font-size:clamp(18px,2vw,26px);color:var(--cyan)">L'IA</div>
-        <div style="display:flex;flex-direction:column;gap:6px;width:100%">
-          <div class="ia-task" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);color:#67e8f9">⚡ Boilerplate</div>
-          <div class="ia-task" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);color:#67e8f9">🧪 Tests unitaires</div>
-          <div class="ia-task" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);color:#67e8f9">🔄 Refactoring</div>
-          <div class="ia-task" style="background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.25);color:#67e8f9">📝 Documentation</div>
+      <!-- Nous -->
+      <div class="ia2-col">
+        <div class="ia2-col-head">
+          <div style="font-size:clamp(28px,3.5vw,44px)">🧑‍💻</div>
+          <div>
+            <div style="font-weight:900;font-size:clamp(16px,1.8vw,24px);color:var(--red)">Nous gardons le contrôle</div>
+            <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2)">choix techniques & humains</div>
+          </div>
         </div>
+        <div class="ia2-pill" style="background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.3);color:#fca5a5">🏗️ Architecture</div>
+        <div class="ia2-pill" style="background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.3);color:#fca5a5">📋 Conventions</div>
+        <div class="ia2-pill" style="background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.3);color:#fca5a5">✅ Review PR</div>
+        <div class="ia2-pill" style="background:rgba(230,57,70,.12);border:1px solid rgba(230,57,70,.3);color:#fca5a5">🎯 Décisions</div>
       </div>
 
     </div>
 
   </div>
 </div>
-<div class="slide" id="s20">
-  <div class="bg-glow" style="width:500px;height:500px;background:rgba(251,191,36,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
-  <div class="z1" style="width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.2vh,28px)">
 
-    <div style="text-align:center">
-      <div class="tag fade-up" style="color:var(--yellow);justify-content:center;margin-bottom:8px">Review Automatisée</div>
-      <h2 class="fade-up" style="font-size:clamp(22px,3vw,42px)">CodeRabbit · <span style="color:var(--yellow)">reviewer IA sur chaque PR</span></h2>
-      <p class="fade-up" style="color:var(--muted2);font-size:clamp(11px,1vw,14px);margin-top:4px">À chaque Pull Request · CodeRabbit analyse automatiquement le code · avant toute review humaine</p>
-    </div>
-
-    <!-- Workflow visuel -->
-    <div class="fade-up" style="display:flex;align-items:center;justify-content:center;gap:clamp(6px,1.2vw,16px);width:100%;flex-wrap:wrap">
-      <div style="text-align:center;padding:14px 16px;border-radius:14px;border:1px solid var(--border2);background:var(--card);min-width:90px">
-        <div style="font-size:clamp(24px,3vw,36px)">🌿</div>
-        <div style="font-size:clamp(10px,.9vw,12px);font-weight:700;color:var(--text);margin-top:6px">Feature<br>branch</div>
-      </div>
-      <div style="color:var(--muted);font-size:20px">→</div>
-      <div style="text-align:center;padding:14px 16px;border-radius:14px;border:1px solid var(--border2);background:var(--card);min-width:90px">
-        <div style="font-size:clamp(24px,3vw,36px)">✅</div>
-        <div style="font-size:clamp(10px,.9vw,12px);font-weight:700;color:var(--text);margin-top:6px">npm run<br>check</div>
-      </div>
-      <div style="color:var(--muted);font-size:20px">→</div>
-      <div style="text-align:center;padding:14px 16px;border-radius:14px;border:1px solid var(--border2);background:var(--card);min-width:90px">
-        <div style="font-size:clamp(24px,3vw,36px)">🔀</div>
-        <div style="font-size:clamp(10px,.9vw,12px);font-weight:700;color:var(--text);margin-top:6px">Pull<br>Request</div>
-      </div>
-      <div style="color:var(--muted);font-size:20px">→</div>
-      <div style="text-align:center;padding:14px 16px;border-radius:14px;border:2px solid rgba(251,191,36,.5);background:rgba(251,191,36,.08);min-width:90px;box-shadow:0 0 20px rgba(251,191,36,.15)">
-        <div style="font-size:clamp(24px,3vw,36px)">🤖</div>
-        <div style="font-size:clamp(10px,.9vw,12px);font-weight:800;color:var(--yellow);margin-top:6px">CodeRabbit<br>review IA</div>
-      </div>
-      <div style="color:var(--muted);font-size:20px">→</div>
-      <div style="text-align:center;padding:14px 16px;border-radius:14px;border:1px solid var(--border2);background:var(--card);min-width:90px">
-        <div style="font-size:clamp(24px,3vw,36px)">👀</div>
-        <div style="font-size:clamp(10px,.9vw,12px);font-weight:700;color:var(--text);margin-top:6px">Review<br>humaine</div>
-      </div>
-      <div style="color:var(--muted);font-size:20px">→</div>
-      <div style="text-align:center;padding:14px 16px;border-radius:14px;border:1px solid rgba(74,222,128,.4);background:rgba(74,222,128,.07);min-width:90px">
-        <div style="font-size:clamp(24px,3vw,36px)">🚀</div>
-        <div style="font-size:clamp(10px,.9vw,12px);font-weight:700;color:var(--green);margin-top:6px">Merge</div>
-      </div>
-    </div>
-
-    <!-- Avantages -->
-    <div class="fade-up" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;width:100%">
-      <div style="padding:14px;border-radius:12px;border:1px solid var(--border2);background:var(--card);text-align:center">
-        <div style="font-size:22px;margin-bottom:6px">🐛</div>
-        <div style="font-weight:800;font-size:clamp(10px,.95vw,13px);color:var(--text);margin-bottom:3px">Bugs détectés</div>
-        <div style="font-size:clamp(9px,.8vw,11px);color:var(--muted2)">Avant que ça parte en prod</div>
-      </div>
-      <div style="padding:14px;border-radius:12px;border:1px solid var(--border2);background:var(--card);text-align:center">
-        <div style="font-size:22px;margin-bottom:6px">🔒</div>
-        <div style="font-weight:800;font-size:clamp(10px,.95vw,13px);color:var(--text);margin-bottom:3px">Sécurité</div>
-        <div style="font-size:clamp(9px,.8vw,11px);color:var(--muted2)">Injections · inputs non sanitisés</div>
-      </div>
-      <div style="padding:14px;border-radius:12px;border:1px solid var(--border2);background:var(--card);text-align:center">
-        <div style="font-size:22px;margin-bottom:6px">♻️</div>
-        <div style="font-weight:800;font-size:clamp(10px,.95vw,13px);color:var(--text);margin-bottom:3px">Duplication</div>
-        <div style="font-size:clamp(9px,.8vw,11px);color:var(--muted2)">Détecte le code copié-collé</div>
-      </div>
-      <div style="padding:14px;border-radius:12px;border:1px solid var(--border2);background:var(--card);text-align:center">
-        <div style="font-size:22px;margin-bottom:6px">⏱️</div>
-        <div style="font-weight:800;font-size:clamp(10px,.95vw,13px);color:var(--text);margin-bottom:3px">Gratuit & immédiat</div>
-        <div style="font-size:clamp(9px,.8vw,11px);color:var(--muted2)">Résultat en moins d'1 min</div>
-      </div>
-    </div>
-
-  </div>
-</div>
 <div class="slide" id="s20b">
   <div class="bg-glow" style="width:500px;height:500px;background:rgba(74,222,128,.07);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
   <div class="z1" style="width:100%;max-width:960px;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.2vh,28px)">
@@ -1361,61 +1286,44 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
   </div>
 </div>
 <div class="slide" id="s21b">
-  <div class="bg-glow" style="width:500px;height:500px;background:rgba(230,57,70,.06);top:-100px;right:-100px"></div>
-  <div class="bg-glow" style="width:400px;height:400px;background:rgba(96,165,250,.05);bottom:-80px;left:-80px"></div>
+  <div class="bg-glow" style="width:500px;height:500px;background:rgba(230,57,70,.06);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
 
-  <div class="z1" style="width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.2vh,26px)">
+  <div class="z1" style="width:100%;max-width:760px;display:flex;flex-direction:column;align-items:center;gap:clamp(24px,4vh,52px)">
 
     <div style="text-align:center">
-      <div class="tag fade-up" style="color:var(--red);justify-content:center;margin-bottom:8px">Sécurité Backend</div>
-      <h2 class="fade-up" style="font-size:clamp(20px,2.8vw,38px)">Chaque route <span style="color:var(--red)">protégée</span> · chaque input <span style="color:var(--red)">validé</span></h2>
+      <div class="tag fade-up" style="color:var(--red);justify-content:center;margin-bottom:10px">Sécurité Backend</div>
+      <h2 class="fade-up" style="font-size:clamp(26px,3.5vw,52px)">Chaque route <span style="color:var(--red)">protégée</span><br>chaque input <span style="color:var(--red)">validé</span></h2>
     </div>
 
-    <!-- Badges -->
-    <div class="fade-up" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-      <span style="display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;border:1px solid rgba(230,57,70,.35);background:rgba(230,57,70,.08);font-weight:800;font-size:clamp(11px,1vw,14px);color:var(--red)">🔐 JWT Auth</span>
-      <span style="display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.08);font-weight:800;font-size:clamp(11px,1vw,14px);color:var(--yellow)">🧂 bcrypt</span>
-      <span style="display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;border:1px solid rgba(96,165,250,.35);background:rgba(96,165,250,.08);font-weight:800;font-size:clamp(11px,1vw,14px);color:var(--blue)">🛡️ Validation inputs</span>
-      <span style="display:flex;align-items:center;gap:6px;padding:8px 16px;border-radius:10px;border:1px solid rgba(74,222,128,.35);background:rgba(74,222,128,.08);font-weight:800;font-size:clamp(11px,1vw,14px);color:var(--green)">🌐 CORS strict</span>
-    </div>
-
-    <!-- Code comparison -->
-    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%">
-
-      <div class="code-wrap" style="border-color:rgba(230,57,70,.35)">
-        <div class="code-bar" style="background:rgba(230,57,70,.15)"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label" style="color:var(--red)">❌ Route non protégée</span></div>
-        <div class="code-body" style="font-size:11px">
-<span class="cm">// N'importe qui peut accéder</span>
-app.<span class="fn">get</span>(<span class="str">'/api/films'</span>, (req, res) => {
-  <span class="kw">const</span> films = <span class="kw">await</span> db.<span class="fn">query</span>(
-    <span class="str">`SELECT * FROM films
-     WHERE jury_id = <span style="color:var(--red)">${req.query.id}</span>`</span>
-  )  <span class="cm">// ← injection SQL possible 😱</span>
-  res.<span class="fn">json</span>(films)
-})
+    <div class="fade-up" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%">
+      <div style="display:flex;align-items:center;gap:14px;padding:20px 24px;border-radius:16px;border:1px solid rgba(230,57,70,.35);background:rgba(230,57,70,.08)">
+        <div style="font-size:clamp(28px,3.5vw,40px)">🔐</div>
+        <div>
+          <div style="font-weight:900;font-size:clamp(15px,1.6vw,20px);color:var(--red)">JWT Auth</div>
+          <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2)">token requis sur chaque route</div>
         </div>
       </div>
-
-      <div class="code-wrap" style="border-color:rgba(74,222,128,.35)">
-        <div class="code-bar" style="background:rgba(74,222,128,.12)"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label" style="color:var(--green)">✅ Notre approche</span></div>
-        <div class="code-body" style="font-size:11px">
-<span class="cm">// JWT requis + requête paramétrée</span>
-app.<span class="fn">get</span>(<span class="str">'/api/films'</span>, <span class="bl">verifyToken</span>, (req, res) => {
-  <span class="kw">const</span> id = <span class="fn">parseInt</span>(req.query.id) <span class="cm">// validé</span>
-  <span class="kw">if</span> (!id) <span class="kw">return</span> res.<span class="fn">status</span>(<span class="yl">400</span>).<span class="fn">json</span>({error})
-  <span class="kw">const</span> films = <span class="kw">await</span> db.<span class="fn">query</span>(
-    <span class="str">'SELECT * FROM films WHERE jury_id = ?'</span>,
-    [id] <span class="cm">// ← paramètre sécurisé ✅</span>
-  )
-  res.<span class="fn">json</span>(films)
-})
+      <div style="display:flex;align-items:center;gap:14px;padding:20px 24px;border-radius:16px;border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.08)">
+        <div style="font-size:clamp(28px,3.5vw,40px)">🧂</div>
+        <div>
+          <div style="font-weight:900;font-size:clamp(15px,1.6vw,20px);color:var(--yellow)">bcrypt</div>
+          <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2)">mots de passe hashés</div>
         </div>
       </div>
-
-    </div>
-
-    <div class="fade-up" style="font-size:clamp(11px,1vw,14px);color:var(--muted2);text-align:center">
-      Middleware <ic>verifyToken</ic> appliqué sur toutes les routes sensibles · inputs validés · requêtes paramétrées
+      <div style="display:flex;align-items:center;gap:14px;padding:20px 24px;border-radius:16px;border:1px solid rgba(96,165,250,.35);background:rgba(96,165,250,.08)">
+        <div style="font-size:clamp(28px,3.5vw,40px)">🛡️</div>
+        <div>
+          <div style="font-weight:900;font-size:clamp(15px,1.6vw,20px);color:var(--blue)">Validation inputs</div>
+          <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2)">requêtes paramétrées · no injection</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px;padding:20px 24px;border-radius:16px;border:1px solid rgba(74,222,128,.35);background:rgba(74,222,128,.08)">
+        <div style="font-size:clamp(28px,3.5vw,40px)">🌐</div>
+        <div>
+          <div style="font-weight:900;font-size:clamp(15px,1.6vw,20px);color:var(--green)">CORS strict</div>
+          <div style="font-size:clamp(11px,1vw,13px);color:var(--muted2)">origines autorisées uniquement</div>
+        </div>
+      </div>
     </div>
 
   </div>
