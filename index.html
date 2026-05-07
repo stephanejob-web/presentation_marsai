@@ -942,212 +942,263 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
 </div>
 <div class="slide" id="s13b">
   <style>
+    @keyframes wf-shake{0%,100%{transform:translateX(0) translateY(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+    @keyframes wf-check-pop{0%{transform:scale(0) rotate(-20deg);opacity:0}60%{transform:scale(1.4) rotate(5deg);opacity:1}100%{transform:scale(1) rotate(0deg);opacity:1}}
+    @keyframes wf-arrow-flow{0%{opacity:.3;transform:translateX(-5px)}100%{opacity:1;transform:translateX(0)}}
+    @keyframes wf-glow-breathe{0%,100%{box-shadow:0 0 20px var(--tc,rgba(74,222,128,.2))}50%{box-shadow:0 0 50px var(--tc,rgba(74,222,128,.4))}}
+
     .wf-step{
-      display:flex;flex-direction:column;align-items:center;gap:8px;
-      padding:18px 14px;border-radius:16px;
-      border:2px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);
-      text-align:center;flex:1;min-width:100px;
-      opacity:0;transform:translateY(20px);
-      transition:opacity .45s ease,transform .45s ease,border-color .4s,background .4s,box-shadow .4s;
+      display:flex;flex-direction:column;align-items:center;gap:0;
+      border-radius:20px;border:2px solid rgba(255,255,255,.06);
+      background:rgba(255,255,255,.03);text-align:center;flex:1;
+      opacity:0;transform:translateY(24px) scale(.94);
+      transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.34,1.2,.64,1),border-color .5s,background .5s,box-shadow .5s;
+      overflow:hidden;position:relative;
     }
+    .wf-step-top{padding:20px 12px 14px;display:flex;flex-direction:column;align-items:center;gap:7px;flex:1;width:100%}
+    .wf-step-bar{height:3px;width:100%;flex-shrink:0;background:rgba(255,255,255,.06);transition:background .5s}
+    .wf-step.pass .wf-step-bar{background:var(--tc,rgba(74,222,128,.8))}
+    .wf-step.fail .wf-step-bar{background:rgba(230,57,70,.8)}
     .wf-step.pass{
-      opacity:1;transform:translateY(0);
-      border-color:rgba(74,222,128,.55);background:rgba(74,222,128,.08);
-      box-shadow:0 0 28px rgba(74,222,128,.2);
+      opacity:1;transform:translateY(0) scale(1);
+      border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.06);
+      animation:wf-glow-breathe 2.5s ease-in-out infinite;
     }
     .wf-step.fail{
-      opacity:1;transform:translateY(0);
-      border-color:rgba(230,57,70,.6);background:rgba(230,57,70,.1);
-      box-shadow:0 0 28px rgba(230,57,70,.25);
-      animation:wf-shake .4s ease;
+      opacity:1;transform:translateY(0) scale(1);
+      border-color:rgba(230,57,70,.6);background:rgba(230,57,70,.09);
+      box-shadow:0 0 40px rgba(230,57,70,.25);
+      animation:wf-shake .45s ease;
     }
-    .wf-step.idle{opacity:1;transform:translateY(0)}
-    @keyframes wf-shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
-    .wf-arrow{font-size:20px;color:var(--muted);align-self:center;margin-bottom:20px;transition:color .3s;flex-shrink:0}
-    .wf-arrow.pass{color:var(--green)}
+    .wf-step.idle{opacity:1;transform:none}
+
+    .wf-arrow{
+      display:flex;flex-direction:column;align-items:center;gap:3px;
+      align-self:center;margin-bottom:28px;flex-shrink:0;
+      color:var(--border2);transition:color .4s;
+    }
+    .wf-arrow-line{width:clamp(12px,2vw,32px);height:2px;background:currentColor;border-radius:1px;transition:background .4s}
+    .wf-arrow-head{font-size:14px;line-height:1;margin-top:-3px}
+    .wf-arrow.pass{color:var(--green);animation:wf-arrow-flow .4s ease}
     .wf-arrow.fail{color:var(--red)}
-    .wf-icon{font-size:clamp(28px,3vw,42px);line-height:1}
-    .wf-label{font-size:clamp(10px,.95vw,13px);font-weight:800;color:var(--text)}
-    .wf-cmd{font-size:clamp(9px,.8vw,11px);font-family:"Courier New",monospace;color:var(--muted)}
-    .wf-desc{font-size:clamp(9px,.8vw,11px);color:var(--muted2);font-style:italic;line-height:1.4;margin-top:2px}
-    .wf-status{font-size:clamp(11px,1vw,14px);font-weight:900;height:18px}
-    .result-box{
-      padding:14px 28px;border-radius:14px;font-weight:900;
-      font-size:clamp(14px,1.5vw,20px);text-align:center;
-      opacity:0;transform:scale(.85);
-      transition:opacity .5s ease,transform .5s ease;
+
+    .wf-icon{font-size:clamp(32px,3.5vw,48px);line-height:1;margin-bottom:2px}
+    .wf-label{font-size:clamp(11px,1vw,14px);font-weight:900;color:var(--text);letter-spacing:.3px}
+    .wf-cmd{font-size:clamp(8px,.75vw,10px);font-family:"Courier New",monospace;color:var(--muted);margin-top:1px}
+    .wf-desc{
+      font-size:clamp(9px,.8vw,11px);color:var(--muted2);line-height:1.5;
+      margin-top:6px;padding:6px 8px;border-radius:8px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);
+      width:calc(100% - 16px);
     }
-    .result-box.show{opacity:1;transform:scale(1)}
-    .result-box.ok{border:2px solid rgba(74,222,128,.6);background:rgba(74,222,128,.12);color:var(--green)}
-    .result-box.ko{border:2px solid rgba(230,57,70,.6);background:rgba(230,57,70,.1);color:var(--red)}
-    .wf-tabs{display:flex;gap:8px;margin-bottom:4px}
-    .wf-tab{padding:6px 16px;border-radius:8px;font-size:clamp(11px,1vw,13px);font-weight:700;cursor:pointer;border:1px solid var(--border2);background:var(--card);color:var(--muted);transition:all .2s}
-    .wf-tab.active{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.08);color:var(--green)}
-    .wf-tab.active-fail{border-color:rgba(230,57,70,.4);background:rgba(230,57,70,.08);color:var(--red)}
+    .wf-status{
+      font-size:clamp(16px,1.8vw,22px);font-weight:900;height:26px;
+      display:flex;align-items:center;justify-content:center;margin-top:4px;
+    }
+    .wf-status.ok{color:var(--green);animation:wf-check-pop .4s cubic-bezier(.34,1.56,.64,1)}
+    .wf-status.ko{color:var(--red);animation:wf-check-pop .4s cubic-bezier(.34,1.56,.64,1)}
+
+    .result-box{
+      padding:16px 36px;border-radius:16px;font-weight:800;
+      font-size:clamp(14px,1.5vw,20px);text-align:center;
+      opacity:0;transform:scale(.85) translateY(10px);
+      transition:opacity .6s ease,transform .6s cubic-bezier(.34,1.2,.64,1);
+    }
+    .result-box.show{opacity:1;transform:scale(1) translateY(0)}
+    .result-box.ok{border:2px solid rgba(74,222,128,.5);background:rgba(74,222,128,.1);color:var(--green);box-shadow:0 0 40px rgba(74,222,128,.15)}
+    .result-box.ko{border:2px solid rgba(230,57,70,.5);background:rgba(230,57,70,.09);color:#fca5a5;box-shadow:0 0 40px rgba(230,57,70,.15)}
+
+    .wf-tabs{display:flex;gap:6px;flex-wrap:wrap}
+    .wf-tab{padding:7px 16px;border-radius:10px;font-size:clamp(11px,1vw,13px);font-weight:700;cursor:pointer;border:1px solid var(--border2);background:rgba(255,255,255,.03);color:var(--muted);transition:all .2s}
+    .wf-tab:hover{background:rgba(255,255,255,.06);color:var(--text)}
+    .wf-tab.active{border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.1);color:var(--green)}
+    .wf-tab.active-fail{border-color:rgba(230,57,70,.5);background:rgba(230,57,70,.09);color:#fca5a5}
+    .wf-replay{padding:8px 20px;border-radius:10px;font-size:clamp(11px,1vw,13px);font-weight:700;cursor:pointer;border:1px solid rgba(96,165,250,.4);background:rgba(96,165,250,.08);color:var(--blue);transition:all .2s;margin-left:8px}
+    .wf-replay:hover{background:rgba(96,165,250,.16);transform:scale(1.05)}
   </style>
 
-  <div class="bg-glow" style="width:600px;height:600px;background:rgba(96,165,250,.05);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="bg-glow" style="width:700px;height:700px;background:rgba(96,165,250,.04);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="bg-glow" style="width:400px;height:400px;background:rgba(74,222,128,.04);top:-100px;right:-100px"></div>
 
-  <div class="z1" style="width:100%;max-width:1050px;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2vh,24px)">
+  <div class="z1" style="width:100%;max-width:1080px;display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2.2vh,28px)">
 
     <div style="text-align:center">
       <div class="tag fade-up" style="color:var(--blue);justify-content:center;margin-bottom:8px">Qualité · Hook pre-push</div>
-      <h2 class="fade-up" style="font-size:clamp(20px,2.8vw,38px)">Ce qui se passe quand on fait <ic style="font-size:clamp(16px,2vw,28px)">git push</ic></h2>
+      <h2 class="fade-up" style="font-size:clamp(20px,2.8vw,38px)">Ce qui se passe à chaque <ic style="font-size:clamp(16px,2vw,26px)">git push</ic></h2>
     </div>
 
-    <!-- Tabs -->
-    <div class="wf-tabs fade-up" style="flex-wrap:wrap">
+    <!-- Tabs + Replay -->
+    <div class="fade-up" style="display:flex;align-items:center;flex-wrap:wrap;gap:6px">
       <button class="wf-tab active"  onclick="wfPlay('pass')">✅ Tout passe</button>
       <button class="wf-tab"         onclick="wfPlay('fail',1)">❌ Prettier</button>
       <button class="wf-tab"         onclick="wfPlay('fail',2)">❌ ESLint</button>
       <button class="wf-tab"         onclick="wfPlay('fail',3)">❌ TypeScript</button>
       <button class="wf-tab"         onclick="wfPlay('fail',4)">❌ Vitest</button>
+      <button class="wf-replay"      onclick="wfReplay()">↺ Revoir</button>
     </div>
 
     <!-- Pipeline -->
-    <div id="wf-anim" style="display:flex;align-items:flex-start;justify-content:center;gap:clamp(4px,1vw,12px);width:100%">
+    <div id="wf-anim" style="display:flex;align-items:flex-start;justify-content:center;gap:clamp(3px,.8vw,10px);width:100%">
 
-      <div class="wf-step idle" id="wf-0">
-        <div class="wf-icon">💻</div>
-        <div class="wf-label">git push</div>
-        <div class="wf-cmd">developer</div>
-        <div class="wf-status" id="wf-s0"></div>
+      <div class="wf-step idle" id="wf-0" style="--tc:rgba(255,255,255,.3)">
+        <div class="wf-step-bar"></div>
+        <div class="wf-step-top">
+          <div class="wf-icon">💻</div>
+          <div class="wf-label">git push</div>
+          <div class="wf-cmd">developer</div>
+          <div class="wf-desc">le dev lance<br>son push</div>
+        </div>
       </div>
-      <div class="wf-arrow" id="wf-a0">→</div>
+      <div class="wf-arrow" id="wf-a0"><div class="wf-arrow-line"></div><div class="wf-arrow-head">▶</div></div>
 
-      <div class="wf-step" id="wf-1">
-        <div class="wf-icon">🎨</div>
-        <div class="wf-label">Prettier</div>
-        <div class="wf-cmd">format check</div>
-        <div class="wf-desc">indentation · virgules<br>guillemets · espaces</div>
-        <div class="wf-status" id="wf-s1"></div>
+      <div class="wf-step" id="wf-1" style="--tc:rgba(244,114,182,.5)">
+        <div class="wf-step-bar"></div>
+        <div class="wf-step-top">
+          <div class="wf-icon">🎨</div>
+          <div class="wf-label">Prettier</div>
+          <div class="wf-cmd">format check</div>
+          <div class="wf-desc">indentation<br>guillemets · espaces</div>
+          <div class="wf-status" id="wf-s1"></div>
+        </div>
       </div>
-      <div class="wf-arrow" id="wf-a1">→</div>
+      <div class="wf-arrow" id="wf-a1"><div class="wf-arrow-line"></div><div class="wf-arrow-head">▶</div></div>
 
-      <div class="wf-step" id="wf-2">
-        <div class="wf-icon">🔍</div>
-        <div class="wf-label">ESLint</div>
-        <div class="wf-cmd">lint check</div>
-        <div class="wf-desc">variables inutilisées<br>bugs · bad practices</div>
-        <div class="wf-status" id="wf-s2"></div>
+      <div class="wf-step" id="wf-2" style="--tc:rgba(167,139,250,.5)">
+        <div class="wf-step-bar"></div>
+        <div class="wf-step-top">
+          <div class="wf-icon">🔍</div>
+          <div class="wf-label">ESLint</div>
+          <div class="wf-cmd">lint check</div>
+          <div class="wf-desc">bugs · mauvaises<br>pratiques · vars inutilisées</div>
+          <div class="wf-status" id="wf-s2"></div>
+        </div>
       </div>
-      <div class="wf-arrow" id="wf-a2">→</div>
+      <div class="wf-arrow" id="wf-a2"><div class="wf-arrow-line"></div><div class="wf-arrow-head">▶</div></div>
 
-      <div class="wf-step" id="wf-3">
-        <div class="wf-icon">🔷</div>
-        <div class="wf-label">TypeScript</div>
-        <div class="wf-cmd">tsc --noEmit</div>
-        <div class="wf-desc">types corrects<br>aucune erreur de compile</div>
-        <div class="wf-status" id="wf-s3"></div>
+      <div class="wf-step" id="wf-3" style="--tc:rgba(96,165,250,.5)">
+        <div class="wf-step-bar"></div>
+        <div class="wf-step-top">
+          <div class="wf-icon">🔷</div>
+          <div class="wf-label">TypeScript</div>
+          <div class="wf-cmd">tsc --noEmit</div>
+          <div class="wf-desc">types corrects<br>aucune erreur de compile</div>
+          <div class="wf-status" id="wf-s3"></div>
+        </div>
       </div>
-      <div class="wf-arrow" id="wf-a3">→</div>
+      <div class="wf-arrow" id="wf-a3"><div class="wf-arrow-line"></div><div class="wf-arrow-head">▶</div></div>
 
-      <div class="wf-step" id="wf-4">
-        <div class="wf-icon">🧪</div>
-        <div class="wf-label">Vitest</div>
-        <div class="wf-cmd">103 tests</div>
-        <div class="wf-desc">aucune régression<br>comportement validé</div>
-        <div class="wf-status" id="wf-s4"></div>
+      <div class="wf-step" id="wf-4" style="--tc:rgba(251,191,36,.5)">
+        <div class="wf-step-bar"></div>
+        <div class="wf-step-top">
+          <div class="wf-icon">🧪</div>
+          <div class="wf-label">Vitest</div>
+          <div class="wf-cmd">103 tests</div>
+          <div class="wf-desc">aucune régression<br>comportement validé</div>
+          <div class="wf-status" id="wf-s4"></div>
+        </div>
       </div>
-      <div class="wf-arrow" id="wf-a4">→</div>
+      <div class="wf-arrow" id="wf-a4"><div class="wf-arrow-line"></div><div class="wf-arrow-head">▶</div></div>
 
-      <div class="wf-step" id="wf-5">
-        <div class="wf-icon">🐙</div>
-        <div class="wf-label">GitHub</div>
-        <div class="wf-cmd">push autorisé</div>
-        <div class="wf-desc">code validé<br>push accepté</div>
-        <div class="wf-status" id="wf-s5"></div>
+      <div class="wf-step" id="wf-5" style="--tc:rgba(255,255,255,.35)">
+        <div class="wf-step-bar"></div>
+        <div class="wf-step-top">
+          <div class="wf-icon">🐙</div>
+          <div class="wf-label">GitHub</div>
+          <div class="wf-cmd">push autorisé</div>
+          <div class="wf-desc">code validé<br>push accepté</div>
+          <div class="wf-status" id="wf-s5"></div>
+        </div>
       </div>
-      <div class="wf-arrow" id="wf-a5">→</div>
+      <div class="wf-arrow" id="wf-a5"><div class="wf-arrow-line"></div><div class="wf-arrow-head">▶</div></div>
 
-      <div class="wf-step" id="wf-6">
-        <div class="wf-icon">🤖</div>
-        <div class="wf-label">CodeRabbit</div>
-        <div class="wf-cmd">review PR</div>
-        <div class="wf-desc">bugs · sécurité<br>duplication · qualité</div>
-        <div class="wf-status" id="wf-s6"></div>
+      <div class="wf-step" id="wf-6" style="--tc:rgba(251,146,60,.5)">
+        <div class="wf-step-bar"></div>
+        <div class="wf-step-top">
+          <div class="wf-icon">🤖</div>
+          <div class="wf-label">CodeRabbit</div>
+          <div class="wf-cmd">review PR</div>
+          <div class="wf-desc">bugs · sécurité<br>duplication · qualité</div>
+          <div class="wf-status" id="wf-s6"></div>
+        </div>
       </div>
 
     </div>
 
     <!-- Résultat -->
-    <div id="wf-result" class="result-box fade-up"></div>
+    <div id="wf-result" class="result-box"></div>
 
   </div>
 
   <script>
   (function(){
-    let wfTimer = null;
+    let wfTimers = [];
     function wfReset(){
-      [1,2,3,4,5].forEach(i=>{
-        const el = document.getElementById('wf-'+i);
-        if(el) el.className='wf-step';
-        const s = document.getElementById('wf-s'+i);
-        if(s) s.textContent='';
-        const a = document.getElementById('wf-a'+(i-1));
+      wfTimers.forEach(clearTimeout);wfTimers=[];
+      for(let i=0;i<=6;i++){
+        const el=document.getElementById('wf-'+i);
+        if(el&&i>0) el.className='wf-step';
+        const s=document.getElementById('wf-s'+i);
+        if(s){s.textContent='';s.className='wf-status';}
+        const a=document.getElementById('wf-a'+i);
         if(a) a.className='wf-arrow';
-      });
-      const res = document.getElementById('wf-result');
+      }
+      const res=document.getElementById('wf-result');
       if(res){res.className='result-box';res.textContent='';}
-      document.querySelectorAll('.wf-tab').forEach(t=>t.className='wf-tab');
-      document.querySelectorAll('.wf-tab')[0].className='wf-tab active';
     }
-    const failMsgs = {
-      1: '🚫 Push bloqué · formatage incorrect — corrige avec Prettier',
-      2: '🚫 Push bloqué · erreur de lint — corrige les règles ESLint',
-      3: '🚫 Push bloqué · erreur TypeScript — tsc refuse de compiler',
-      4: '🚫 Push bloqué · tests échoués — corrige avant de pusher',
+    const failMsgs={
+      1:'🚫 Push bloqué — le code n\'est pas formaté correctement · lance Prettier',
+      2:'🚫 Push bloqué — ESLint a détecté des erreurs · corrige-les d\'abord',
+      3:'🚫 Push bloqué — TypeScript refuse de compiler · vérifie tes types',
+      4:'🚫 Push bloqué — des tests échouent · aucune régression tolérée',
     };
-    window.wfPlay = function(mode, failStep){
-      if(wfTimer) clearTimeout(wfTimer);
+    window.wfReplay=function(){
+      const tabs=document.querySelectorAll('.wf-tab');
+      const active=Array.from(tabs).find(t=>t.className.includes('active'));
+      if(active&&active.className.includes('fail')){
+        const idx=Array.from(tabs).indexOf(active);
+        wfPlay('fail',idx);
+      } else {
+        wfPlay('pass');
+      }
+    };
+    window.wfPlay=function(mode,failStep){
       wfReset();
-      const tabs = document.querySelectorAll('.wf-tab');
+      const tabs=document.querySelectorAll('.wf-tab');
       tabs.forEach(t=>t.className='wf-tab');
       if(mode==='pass') tabs[0].className='wf-tab active';
       else tabs[failStep].className='wf-tab active-fail';
-
-      const failAt = mode==='fail' ? failStep : 99;
-      const steps = [
-        {icon:'🎨',label:'Prettier',cmd:'format check'},
-        {icon:'🔍',label:'ESLint',cmd:'lint check'},
-        {icon:'🔷',label:'TypeScript',cmd:'tsc --noEmit'},
-        {icon:'🧪',label:'Vitest',cmd:'103 tests'},
-        {icon:'🐙',label:'GitHub',cmd:'push autorisé'},
-        {icon:'🤖',label:'CodeRabbit',cmd:'review PR'},
-      ];
-      steps.forEach((s,i)=>{
-        const idx = i+1;
-        const el = document.getElementById('wf-'+idx);
-        const statusEl = document.getElementById('wf-s'+idx);
-        const arrEl = idx > 1 ? document.getElementById('wf-a'+(idx-1)) : null;
-        const delay = 400 + i*600;
-        wfTimer = setTimeout(()=>{
-          if(idx <= failAt){
-            const isFailStep = idx === failAt && mode==='fail';
-            el.className = 'wf-step ' + (isFailStep?'fail':'pass');
-            statusEl.textContent = isFailStep ? '✖' : '✔';
-            statusEl.style.color = isFailStep ? 'var(--red)' : 'var(--green)';
-            if(arrEl) arrEl.className = 'wf-arrow ' + (isFailStep?'fail':'pass');
+      const failAt=mode==='fail'?failStep:99;
+      for(let i=0;i<6;i++){
+        const idx=i+1;
+        const delay=500+i*850;
+        wfTimers.push(setTimeout(()=>{
+          if(idx>failAt) return;
+          const el=document.getElementById('wf-'+idx);
+          const sEl=document.getElementById('wf-s'+idx);
+          const aEl=idx>=1?document.getElementById('wf-a'+(idx-1)):null;
+          const isFail=idx===failAt&&mode==='fail';
+          el.className='wf-step '+(isFail?'fail':'pass');
+          sEl.textContent=isFail?'✖':'✔';
+          sEl.className='wf-status '+(isFail?'ko':'ok');
+          if(aEl) aEl.className='wf-arrow '+(isFail?'fail':'pass');
+          if(isFail){
+            wfTimers.push(setTimeout(()=>{
+              const res=document.getElementById('wf-result');
+              res.textContent=failMsgs[failAt];
+              res.className='result-box ko show';
+            },600));
           }
-          if(idx === failAt && mode==='fail'){
-            setTimeout(()=>{
-              const res = document.getElementById('wf-result');
-              res.textContent = failMsgs[failAt];
-              res.className = 'result-box ko show';
-            }, 400);
+          if(idx===6&&mode==='pass'){
+            wfTimers.push(setTimeout(()=>{
+              const res=document.getElementById('wf-result');
+              res.textContent='🚀 Code en prod · validé par 4 outils + CodeRabbit';
+              res.className='result-box ok show';
+            },600));
           }
-          if(idx === 6 && mode==='pass'){
-            setTimeout(()=>{
-              const res = document.getElementById('wf-result');
-              res.textContent = '🚀 Code en prod · vérifié par les outils ET par CodeRabbit';
-              res.className = 'result-box ok show';
-            }, 400);
-          }
-        }, delay);
-      });
+        },delay));
+      }
     };
-    // Auto-play on slide enter handled externally
-    document.getElementById('s13b').addEventListener('wf-enter', ()=>wfPlay('pass'));
+    document.getElementById('s13b').addEventListener('wf-enter',()=>wfPlay('pass'));
   })();
   </script>
 </div>
@@ -1381,182 +1432,217 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
 </div>
 <div class="slide" id="s26">
   <style>
+    /* ── pipeline ── */
     #dp-pipeline{display:flex;align-items:center;justify-content:center;gap:0;width:100%}
     .dp-node{
-      display:flex;flex-direction:column;align-items:center;gap:10px;
-      padding:22px 18px;border-radius:20px;
-      border:2px solid rgba(255,255,255,.06);
-      background:rgba(255,255,255,.03);
-      text-align:center;min-width:100px;flex:1;max-width:130px;
-      opacity:0;transform:translateY(24px) scale(.92);
-      transition:opacity .5s ease,transform .5s ease,border-color .4s,box-shadow .4s,background .4s;
-      position:relative;
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      padding:18px 14px;border-radius:18px;
+      border:2px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);
+      text-align:center;min-width:80px;flex:1;max-width:120px;
+      opacity:0;transform:translateY(20px) scale(.93);
+      transition:opacity .45s ease,transform .45s ease,border-color .4s,box-shadow .4s,background .4s;
+      position:relative;overflow:hidden;
     }
-    .dp-node.lit{
-      opacity:1;transform:translateY(0) scale(1);
-      border-color:rgba(74,222,128,.55);
-      background:rgba(74,222,128,.07);
-      box-shadow:0 0 32px rgba(74,222,128,.2),0 0 60px rgba(74,222,128,.07);
-    }
-    .dp-node.lit-final{
-      border-color:rgba(74,222,128,.9);
-      background:rgba(74,222,128,.13);
-      box-shadow:0 0 50px rgba(74,222,128,.45),0 0 100px rgba(74,222,128,.15);
-      animation:dp-pulse 1.4s ease-in-out infinite;
-    }
-    @keyframes dp-pulse{0%,100%{box-shadow:0 0 50px rgba(74,222,128,.45),0 0 100px rgba(74,222,128,.15)}50%{box-shadow:0 0 80px rgba(74,222,128,.7),0 0 140px rgba(74,222,128,.25)}}
-    .dp-node .dp-icon{font-size:clamp(32px,3.5vw,52px);line-height:1}
-    .dp-node .dp-label{font-size:clamp(10px,1vw,13px);font-weight:800;color:var(--text);letter-spacing:.5px;text-transform:uppercase}
-    .dp-node .dp-sub{font-size:clamp(9px,.85vw,11px);color:var(--muted);margin-top:2px;font-family:'Courier New',monospace}
-    .dp-mini-row{display:flex;align-items:flex-start;justify-content:center;gap:4px;width:100%;margin-top:8px}
-    .dp-mini-step{
-      display:flex;flex-direction:column;align-items:center;gap:4px;
-      padding:10px 6px;border-radius:12px;text-align:center;flex:1;
-      border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);
-      opacity:0;transform:translateY(14px);
-      transition:opacity .35s ease,transform .35s ease,border-color .3s,background .3s,box-shadow .3s;
-    }
-    .dp-mini-step.s1{transition-delay:.05s}
-    .dp-mini-step.s2{transition-delay:.35s}
-    .dp-mini-step.s3{transition-delay:.65s}
-    .dp-mini-step.s4{transition-delay:.95s}
-    .dp-node.lit .dp-mini-step{opacity:1;transform:none;border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.07);box-shadow:0 0 16px rgba(74,222,128,.15)}
-    .dp-mini-icon{font-size:clamp(16px,1.8vw,22px);line-height:1}
-    .dp-mini-label{font-size:clamp(8px,.8vw,11px);font-weight:800;color:var(--text)}
-    .dp-mini-cmd{font-size:clamp(7px,.65vw,9px);font-family:'Courier New',monospace;color:var(--muted)}
-    .dp-mini-desc{font-size:clamp(7px,.62vw,9px);color:var(--muted2);font-style:italic;line-height:1.3}
-    .dp-mini-check{font-size:11px;font-weight:900;color:var(--green);opacity:0;transition:opacity .2s ease}
-    .dp-mini-step.s1 .dp-mini-check{transition-delay:.3s}
-    .dp-mini-step.s2 .dp-mini-check{transition-delay:.6s}
-    .dp-mini-step.s3 .dp-mini-check{transition-delay:.9s}
-    .dp-mini-step.s4 .dp-mini-check{transition-delay:1.2s}
-    .dp-node.lit .dp-mini-check{opacity:1}
-    .dp-mini-arr{font-size:11px;color:var(--muted);flex-shrink:0;opacity:0;transition:opacity .2s ease;margin-top:22px}
-    .dp-mini-arr.a1{transition-delay:.2s}
-    .dp-mini-arr.a2{transition-delay:.5s}
-    .dp-mini-arr.a3{transition-delay:.8s}
-    .dp-node.lit .dp-mini-arr{opacity:1}
-    .dp-beam{
-      flex:0 0 clamp(16px,2.5vw,40px);height:3px;
-      background:linear-gradient(90deg,rgba(74,222,128,0),rgba(74,222,128,.3));
-      border-radius:2px;position:relative;overflow:hidden;
-      opacity:0;transition:opacity .3s ease;
-      align-self:center;margin-bottom:32px;
-    }
-    .dp-beam.lit{opacity:1;}
-    .dp-beam.lit::after{
-      content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-      background:linear-gradient(90deg,transparent,rgba(74,222,128,1),transparent);
-      animation:beam-travel .6s ease forwards;
-    }
+    .dp-top-bar{position:absolute;top:0;left:0;right:0;height:4px;background:rgba(var(--nc-a,74,222,128),1);border-radius:18px 18px 0 0;opacity:0;transition:opacity .45s ease .1s}
+    .dp-node.lit .dp-top-bar{opacity:1}
+    .dp-node.lit{opacity:1;transform:none;border-color:rgba(var(--nc-a,74,222,128),.55);background:rgba(var(--nc-a,74,222,128),.07);box-shadow:0 0 28px rgba(var(--nc-a,74,222,128),.2)}
+    .dp-node.lit-final{border-color:rgba(var(--nc-a,74,222,128),.9);background:rgba(var(--nc-a,74,222,128),.14);box-shadow:0 0 50px rgba(var(--nc-a,74,222,128),.5),0 0 100px rgba(var(--nc-a,74,222,128),.18);animation:dp-pulse 1.4s ease-in-out infinite}
+    @keyframes dp-pulse{0%,100%{box-shadow:0 0 50px rgba(var(--nc-a,74,222,128),.5),0 0 100px rgba(var(--nc-a,74,222,128),.18)}50%{box-shadow:0 0 90px rgba(var(--nc-a,74,222,128),.75),0 0 150px rgba(var(--nc-a,74,222,128),.3)}}
+    .dp-node .dp-icon{font-size:clamp(26px,2.8vw,40px);line-height:1}
+    .dp-node .dp-label{font-size:clamp(9px,.9vw,12px);font-weight:800;color:var(--text);letter-spacing:.4px;text-transform:uppercase}
+    .dp-node .dp-sub{font-size:clamp(8px,.75vw,10px);color:var(--muted);margin-top:1px;font-family:'Courier New',monospace}
+    .dp-live-badge{font-size:clamp(10px,.9vw,13px);font-weight:900;color:var(--green);opacity:0;transform:scale(.5);transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1);letter-spacing:.5px}
+    .dp-node.lit-final .dp-live-badge{opacity:1;transform:scale(1)}
+    /* beam */
+    .dp-beam{flex:0 0 clamp(12px,2vw,32px);height:3px;background:linear-gradient(90deg,rgba(255,255,255,.05),rgba(255,255,255,.12));border-radius:2px;position:relative;overflow:hidden;opacity:0;transition:opacity .3s ease;align-self:center;margin-bottom:20px}
+    .dp-beam.lit{opacity:1}
+    .dp-beam.lit::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);animation:beam-travel .5s ease forwards}
     @keyframes beam-travel{0%{left:-100%}100%{left:100%}}
+    /* ── pre-push detail row ── */
+    #pp-detail{
+      display:flex;align-items:center;justify-content:center;gap:14px;width:100%;
+      opacity:0;transform:translateY(-6px);
+      transition:opacity .35s ease,transform .35s ease;
+    }
+    #pp-detail.lit{opacity:1;transform:translateY(0)}
+    .pp-card{
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      padding:18px 14px;border-radius:18px;text-align:center;flex:1;max-width:220px;
+      border:2px solid rgba(255,255,255,.06);background:rgba(255,255,255,.03);
+      opacity:0;transform:scale(.86);position:relative;overflow:hidden;
+      transition:opacity .45s ease,transform .45s cubic-bezier(.34,1.56,.64,1),border-color .3s,background .3s,box-shadow .3s;
+    }
+    .pp-top-bar{position:absolute;top:0;left:0;right:0;height:4px;background:rgba(var(--mc-a,74,222,128),1);opacity:0;transition:opacity .3s ease .15s;border-radius:18px 18px 0 0}
+    .pp-card.lit{opacity:1;transform:scale(1);border-color:rgba(var(--mc-a,74,222,128),.55);background:rgba(var(--mc-a,74,222,128),.08);box-shadow:0 0 28px rgba(var(--mc-a,74,222,128),.22)}
+    .pp-card.lit .pp-top-bar{opacity:1}
+    .pp-icon{font-size:clamp(28px,3vw,42px);line-height:1}
+    .pp-label{font-size:clamp(13px,1.3vw,18px);font-weight:900;color:var(--text);letter-spacing:.3px}
+    .pp-cmd{font-size:clamp(9px,.85vw,12px);font-family:'Courier New',monospace;color:var(--muted)}
+    .pp-what{font-size:clamp(9px,.82vw,11px);color:var(--muted2);font-style:italic}
+    .pp-check{font-size:20px;font-weight:900;color:var(--green);opacity:0;transform:scale(0) rotate(-20deg);transition:opacity .25s ease .25s,transform .45s cubic-bezier(.34,1.56,.64,1) .25s}
+    .pp-card.lit .pp-check{opacity:1;transform:scale(1) rotate(0)}
+    .pp-arr{font-size:22px;flex-shrink:0;opacity:0;transition:opacity .3s ease;color:rgba(255,255,255,.25)}
+    .pp-arr.lit{opacity:1;color:rgba(var(--mc-a,200,200,200),.6)}
+    /* replay */
+    #dp-replay-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:30px;border:1px solid rgba(74,222,128,.35);background:rgba(74,222,128,.06);color:var(--green);font-weight:800;font-size:clamp(11px,1vw,14px);cursor:pointer;transition:background .2s,box-shadow .2s,transform .15s;letter-spacing:.3px}
+    #dp-replay-btn:hover{background:rgba(74,222,128,.14);box-shadow:0 0 20px rgba(74,222,128,.2);transform:scale(1.04)}
+    #dp-replay-btn:active{transform:scale(.97)}
   </style>
 
   <div class="bg-glow" style="width:700px;height:700px;background:rgba(74,222,128,.05);top:50%;left:50%;transform:translate(-50%,-50%);z-index:0"></div>
   <div class="bg-glow" style="width:350px;height:350px;background:rgba(96,165,250,.05);top:-80px;left:-80px;z-index:0"></div>
 
-  <div class="z1" style="width:100%;max-width:1100px;display:flex;flex-direction:column;align-items:center;gap:clamp(16px,2.5vh,32px)">
+  <div class="z1" style="width:100%;max-width:1100px;display:flex;flex-direction:column;align-items:center;gap:clamp(12px,2vh,24px)">
 
     <!-- Header -->
     <div style="text-align:center">
-      <div class="tag fade-up" style="color:var(--green);justify-content:center;margin-bottom:8px">Infrastructure · VPS OVH</div>
-      <h2 class="fade-up" style="font-size:clamp(26px,3.4vw,50px);line-height:1.1;margin-bottom:10px">
+      <div class="tag fade-up" style="color:var(--green);justify-content:center;margin-bottom:6px">Infrastructure · VPS OVH</div>
+      <h2 class="fade-up" style="font-size:clamp(24px,3vw,44px);line-height:1.1;margin-bottom:8px">
         Push → <span style="color:var(--green)">Production</span> · <span style="color:var(--green)">automatiquement</span>
       </h2>
-      <p class="fade-up" style="font-size:clamp(14px,1.3vw,18px);color:var(--muted2)">
+      <p class="fade-up" style="font-size:clamp(13px,1.2vw,17px);color:var(--muted2)">
         Zéro intervention manuelle · c'est le <strong style="color:white">déploiement continu</strong>
       </p>
     </div>
 
-    <!-- Pipeline GRAND -->
-    <div id="deploy-anim" style="width:100%">
+    <div id="deploy-anim" style="width:100%;display:flex;flex-direction:column;gap:14px">
+
+      <!-- ─── Ligne pipeline principale ─── -->
       <div id="dp-pipeline">
-        <div class="dp-node" data-d="0">
+
+        <div class="dp-node" data-d="0" style="--nc-a:255,255,255">
+          <div class="dp-top-bar"></div>
           <div class="dp-icon">💻</div>
           <div class="dp-label">Dev</div>
           <div class="dp-sub">git push</div>
         </div>
+
         <div class="dp-beam" data-d="1"></div>
-        <div class="dp-node" data-d="2" style="flex:5;max-width:480px;border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.03);padding:14px 12px">
-          <div class="dp-label" style="color:var(--blue);font-size:clamp(9px,.9vw,12px)">🛡️ pre-push · hooks qualité</div>
-          <div class="dp-mini-row">
-            <div class="dp-mini-step s1">
-              <div class="dp-mini-icon">🎨</div>
-              <div class="dp-mini-label">Prettier</div>
-              <div class="dp-mini-cmd">format check</div>
-              <div class="dp-mini-desc">indentation<br>guillemets</div>
-              <div class="dp-mini-check">✔</div>
-            </div>
-            <div class="dp-mini-arr a1">→</div>
-            <div class="dp-mini-step s2">
-              <div class="dp-mini-icon">🔍</div>
-              <div class="dp-mini-label">ESLint</div>
-              <div class="dp-mini-cmd">lint check</div>
-              <div class="dp-mini-desc">bugs<br>bad practices</div>
-              <div class="dp-mini-check">✔</div>
-            </div>
-            <div class="dp-mini-arr a2">→</div>
-            <div class="dp-mini-step s3">
-              <div class="dp-mini-icon">🔷</div>
-              <div class="dp-mini-label">TypeScript</div>
-              <div class="dp-mini-cmd">tsc --noEmit</div>
-              <div class="dp-mini-desc">types<br>compilation</div>
-              <div class="dp-mini-check">✔</div>
-            </div>
-            <div class="dp-mini-arr a3">→</div>
-            <div class="dp-mini-step s4">
-              <div class="dp-mini-icon">🧪</div>
-              <div class="dp-mini-label">Vitest</div>
-              <div class="dp-mini-cmd">103 tests</div>
-              <div class="dp-mini-desc">aucune<br>régression</div>
-              <div class="dp-mini-check">✔</div>
-            </div>
-          </div>
+
+        <!-- 🛡️ pre-push — compact dans le pipeline -->
+        <div class="dp-node" data-d="2" style="--nc-a:96,165,250;flex:2;max-width:160px">
+          <div class="dp-top-bar"></div>
+          <div class="dp-icon">🛡️</div>
+          <div class="dp-label" style="color:var(--blue)">Pre-push</div>
+          <div class="dp-sub">hooks qualité</div>
         </div>
-        <div class="dp-beam" data-d="3"></div>
-        <div class="dp-node" data-d="4">
+
+        <div class="dp-beam" data-d="11"></div>
+
+        <div class="dp-node" data-d="12" style="--nc-a:255,255,255">
+          <div class="dp-top-bar"></div>
           <div class="dp-icon">🐙</div>
           <div class="dp-label">GitHub</div>
           <div class="dp-sub">main branch</div>
         </div>
-        <div class="dp-beam" data-d="5"></div>
-        <div class="dp-node" data-d="6">
+
+        <div class="dp-beam" data-d="13"></div>
+
+        <div class="dp-node" data-d="14" style="--nc-a:167,139,250">
+          <div class="dp-top-bar"></div>
           <div class="dp-icon">🔗</div>
           <div class="dp-label">Webhook</div>
           <div class="dp-sub">trigger</div>
         </div>
-        <div class="dp-beam" data-d="7"></div>
-        <div class="dp-node" data-d="8">
+
+        <div class="dp-beam" data-d="15"></div>
+
+        <div class="dp-node" data-d="16" style="--nc-a:34,211,238">
+          <div class="dp-top-bar"></div>
           <div class="dp-icon">🖥️</div>
           <div class="dp-label">VPS OVH</div>
           <div class="dp-sub">git pull</div>
         </div>
-        <div class="dp-beam" data-d="9"></div>
-        <div class="dp-node" data-d="10">
+
+        <div class="dp-beam" data-d="17"></div>
+
+        <div class="dp-node" data-d="18" style="--nc-a:56,189,248">
+          <div class="dp-top-bar"></div>
           <div class="dp-icon">🐳</div>
           <div class="dp-label">Docker</div>
           <div class="dp-sub">compose up</div>
         </div>
-        <div class="dp-beam" data-d="11"></div>
-        <div class="dp-node" data-d="12">
+
+        <div class="dp-beam" data-d="19"></div>
+
+        <div class="dp-node" data-d="20" style="--nc-a:52,211,153">
+          <div class="dp-top-bar"></div>
           <div class="dp-icon">🌐</div>
-          <div class="dp-label">Site en ligne</div>
+          <div class="dp-label">Site</div>
           <div class="dp-sub">marsai.lightchurch.fr</div>
         </div>
-        <div class="dp-beam" data-d="13"></div>
-        <div class="dp-node" data-d="14">
+
+        <div class="dp-beam" data-d="21"></div>
+
+        <div class="dp-node" data-d="22" style="--nc-a:74,222,128">
+          <div class="dp-top-bar"></div>
           <div class="dp-icon">🚀</div>
           <div class="dp-label" style="color:var(--green)">Live !</div>
           <div class="dp-sub" style="color:var(--green)">en prod</div>
+          <div class="dp-live-badge">🎉 déployé</div>
         </div>
+
       </div>
+
+      <!-- ─── Détail pre-push (s'affiche sous le pipeline) ─── -->
+      <div id="pp-detail" data-d="3">
+
+        <div class="pp-card" data-d="4" style="--mc-a:251,191,36">
+          <div class="pp-top-bar"></div>
+          <div class="pp-icon">🎨</div>
+          <div class="pp-label">Prettier</div>
+          <div class="pp-cmd">format check</div>
+          <div class="pp-what">indentation · guillemets</div>
+          <div class="pp-check">✔</div>
+        </div>
+
+        <div class="pp-arr" data-d="5" style="--mc-a:251,191,36">→</div>
+
+        <div class="pp-card" data-d="6" style="--mc-a:248,113,113">
+          <div class="pp-top-bar"></div>
+          <div class="pp-icon">🔍</div>
+          <div class="pp-label">ESLint</div>
+          <div class="pp-cmd">lint check</div>
+          <div class="pp-what">bugs · bad practices</div>
+          <div class="pp-check">✔</div>
+        </div>
+
+        <div class="pp-arr" data-d="7" style="--mc-a:248,113,113">→</div>
+
+        <div class="pp-card" data-d="8" style="--mc-a:96,165,250">
+          <div class="pp-top-bar"></div>
+          <div class="pp-icon">🔷</div>
+          <div class="pp-label">TypeScript</div>
+          <div class="pp-cmd">tsc --noEmit</div>
+          <div class="pp-what">types · compilation</div>
+          <div class="pp-check">✔</div>
+        </div>
+
+        <div class="pp-arr" data-d="9" style="--mc-a:96,165,250">→</div>
+
+        <div class="pp-card" data-d="10" style="--mc-a:163,230,53">
+          <div class="pp-top-bar"></div>
+          <div class="pp-icon">🧪</div>
+          <div class="pp-label">Vitest</div>
+          <div class="pp-cmd">103 tests</div>
+          <div class="pp-what">aucune régression</div>
+          <div class="pp-check">✔</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Replay -->
+    <div style="text-align:center">
+      <button id="dp-replay-btn" onclick="dpReplay()">↺ Revoir</button>
     </div>
 
     <div class="fade-up" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
-      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(96,165,250,.3);background:rgba(96,165,250,.08);color:var(--blue);font-weight:700;font-size:clamp(12px,1.1vw,15px)">VPS Linux</span>
-      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.08);color:var(--green);font-weight:700;font-size:clamp(12px,1.1vw,15px)">Docker</span>
-      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:white;font-weight:700;font-size:clamp(12px,1.1vw,15px)">GitHub Webhooks</span>
-      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.08);color:var(--purple);font-weight:700;font-size:clamp(12px,1.1vw,15px)">Nginx</span>
+      <span style="padding:7px 16px;border-radius:10px;border:1px solid rgba(34,211,238,.3);background:rgba(34,211,238,.08);color:rgb(34,211,238);font-weight:700;font-size:clamp(11px,1vw,14px)">VPS Linux</span>
+      <span style="padding:7px 16px;border-radius:10px;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.08);color:var(--green);font-weight:700;font-size:clamp(11px,1vw,14px)">Docker</span>
+      <span style="padding:7px 16px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:white;font-weight:700;font-size:clamp(11px,1vw,14px)">GitHub Webhooks</span>
+      <span style="padding:7px 16px;border-radius:10px;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.08);color:var(--purple);font-weight:700;font-size:clamp(11px,1vw,14px)">Nginx</span>
     </div>
 
   </div>
@@ -1787,21 +1873,7 @@ function goTo(n){
     });
   }, 300);
   // deploy animation
-  const deployAnim = slides[cur].querySelector('#deploy-anim');
-  if(deployAnim){
-    deployAnim.querySelectorAll('.dp-node,.dp-beam').forEach(el=>el.classList.remove('lit','lit-final'));
-    const items = Array.from(deployAnim.querySelectorAll('[data-d]')).sort((a,b)=>+a.dataset.d - +b.dataset.d);
-    let delay = 400;
-    items.forEach((el,i)=>{
-      const isPP = el.dataset.d === '2'; // nœud pre-push
-      setTimeout(()=>{
-        const isFinal = i === items.length-1;
-        el.classList.add('lit');
-        if(isFinal && el.classList.contains('dp-node')) el.classList.add('lit-final');
-      }, delay);
-      delay += isPP ? 1400 : 320; // pause longue après pre-push pour laisser les 4 outils s'animer
-    });
-  }
+  if(slides[cur].querySelector('#deploy-anim')) dpPlay();
   // pipeline animation
   const pipe = slides[cur].querySelector('#pipeline-anim');
   if(pipe){
@@ -1823,6 +1895,27 @@ document.addEventListener('keydown',e=>{
 let tx=0;
 document.addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
 document.addEventListener('touchend',e=>{const dx=tx-e.changedTouches[0].clientX;if(Math.abs(dx)>50)nav(dx>0?1:-1)});
+
+window.dpPlay=function(){
+  const deployAnim=document.getElementById('deploy-anim');
+  if(!deployAnim)return;
+  deployAnim.querySelectorAll('.dp-node,.dp-beam,.pp-card,.pp-arr,#pp-detail').forEach(el=>el.classList.remove('lit','lit-final'));
+  const items=Array.from(deployAnim.querySelectorAll('[data-d]')).sort((a,b)=>+a.dataset.d - +b.dataset.d);
+  let delay=350;
+  items.forEach((el,i)=>{
+    setTimeout(()=>{
+      const isFinal=i===items.length-1;
+      el.classList.add('lit');
+      if(isFinal&&el.classList.contains('dp-node'))el.classList.add('lit-final');
+    },delay);
+    if(el.classList.contains('pp-card'))delay+=680;
+    else if(el.classList.contains('pp-arr'))delay+=150;
+    else if(el.id==='pp-detail')delay+=200;
+    else if(el.classList.contains('dp-beam'))delay+=280;
+    else delay+=450; // dp-node
+  });
+};
+window.dpReplay=function(){dpPlay();};
 </script>
 </body>
 </html>
