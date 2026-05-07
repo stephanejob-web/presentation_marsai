@@ -1409,6 +1409,19 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
     .dp-node .dp-icon{font-size:clamp(32px,3.5vw,52px);line-height:1}
     .dp-node .dp-label{font-size:clamp(10px,1vw,13px);font-weight:800;color:var(--text);letter-spacing:.5px;text-transform:uppercase}
     .dp-node .dp-sub{font-size:clamp(9px,.85vw,11px);color:var(--muted);margin-top:2px;font-family:'Courier New',monospace}
+    .dp-pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:8px;width:100%}
+    .dp-pp-tool{display:flex;align-items:center;gap:5px;padding:5px 7px;border-radius:8px;border:1px solid rgba(74,222,128,.2);background:rgba(74,222,128,.06);opacity:0;transform:scale(.8) translateY(6px);transition:opacity .3s ease,transform .3s cubic-bezier(.34,1.56,.64,1)}
+    .dp-pp-tool-icon{font-size:14px;flex-shrink:0}
+    .dp-pp-tool-name{font-size:clamp(8px,.7vw,10px);font-weight:800;color:var(--text);flex:1}
+    .dp-pp-tool-check{font-size:11px;color:var(--green);font-weight:900;opacity:0;transition:opacity .2s ease}
+    .dp-node.lit .dp-pp-tool:nth-child(1){opacity:1;transform:none;transition-delay:.1s}
+    .dp-node.lit .dp-pp-tool:nth-child(2){opacity:1;transform:none;transition-delay:.35s}
+    .dp-node.lit .dp-pp-tool:nth-child(3){opacity:1;transform:none;transition-delay:.6s}
+    .dp-node.lit .dp-pp-tool:nth-child(4){opacity:1;transform:none;transition-delay:.85s}
+    .dp-node.lit .dp-pp-tool:nth-child(1) .dp-pp-tool-check{opacity:1;transition-delay:.25s}
+    .dp-node.lit .dp-pp-tool:nth-child(2) .dp-pp-tool-check{opacity:1;transition-delay:.5s}
+    .dp-node.lit .dp-pp-tool:nth-child(3) .dp-pp-tool-check{opacity:1;transition-delay:.75s}
+    .dp-node.lit .dp-pp-tool:nth-child(4) .dp-pp-tool-check{opacity:1;transition-delay:1s}
     .dp-beam{
       flex:0 0 clamp(16px,2.5vw,40px);height:3px;
       background:linear-gradient(90deg,rgba(74,222,128,0),rgba(74,222,128,.3));
@@ -1450,37 +1463,65 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
           <div class="dp-sub">git push</div>
         </div>
         <div class="dp-beam" data-d="1"></div>
-        <div class="dp-node" data-d="2">
+        <div class="dp-node" data-d="2" style="max-width:200px;flex:2;border-color:rgba(96,165,250,.25);background:rgba(96,165,250,.04)">
+          <div class="dp-icon">🛡️</div>
+          <div class="dp-label" style="color:var(--blue)">pre-push</div>
+          <div class="dp-sub">hooks qualité</div>
+          <div class="dp-pp-grid">
+            <div class="dp-pp-tool">
+              <span class="dp-pp-tool-icon">🎨</span>
+              <span class="dp-pp-tool-name">Prettier</span>
+              <span class="dp-pp-tool-check">✓</span>
+            </div>
+            <div class="dp-pp-tool">
+              <span class="dp-pp-tool-icon">🔍</span>
+              <span class="dp-pp-tool-name">ESLint</span>
+              <span class="dp-pp-tool-check">✓</span>
+            </div>
+            <div class="dp-pp-tool">
+              <span class="dp-pp-tool-icon">🔷</span>
+              <span class="dp-pp-tool-name">TypeScript</span>
+              <span class="dp-pp-tool-check">✓</span>
+            </div>
+            <div class="dp-pp-tool">
+              <span class="dp-pp-tool-icon">🧪</span>
+              <span class="dp-pp-tool-name">Vitest</span>
+              <span class="dp-pp-tool-check">✓</span>
+            </div>
+          </div>
+        </div>
+        <div class="dp-beam" data-d="3"></div>
+        <div class="dp-node" data-d="4">
           <div class="dp-icon">🐙</div>
           <div class="dp-label">GitHub</div>
           <div class="dp-sub">main branch</div>
         </div>
-        <div class="dp-beam" data-d="3"></div>
-        <div class="dp-node" data-d="4">
+        <div class="dp-beam" data-d="5"></div>
+        <div class="dp-node" data-d="6">
           <div class="dp-icon">🔗</div>
           <div class="dp-label">Webhook</div>
           <div class="dp-sub">trigger</div>
         </div>
-        <div class="dp-beam" data-d="5"></div>
-        <div class="dp-node" data-d="6">
+        <div class="dp-beam" data-d="7"></div>
+        <div class="dp-node" data-d="8">
           <div class="dp-icon">🖥️</div>
           <div class="dp-label">VPS OVH</div>
           <div class="dp-sub">git pull</div>
         </div>
-        <div class="dp-beam" data-d="7"></div>
-        <div class="dp-node" data-d="8">
+        <div class="dp-beam" data-d="9"></div>
+        <div class="dp-node" data-d="10">
           <div class="dp-icon">🐳</div>
           <div class="dp-label">Docker</div>
           <div class="dp-sub">compose up</div>
         </div>
-        <div class="dp-beam" data-d="9"></div>
-        <div class="dp-node" data-d="10">
+        <div class="dp-beam" data-d="11"></div>
+        <div class="dp-node" data-d="12">
           <div class="dp-icon">🌐</div>
           <div class="dp-label">Site en ligne</div>
           <div class="dp-sub">marsai.lightchurch.fr</div>
         </div>
-        <div class="dp-beam" data-d="11"></div>
-        <div class="dp-node" data-d="12">
+        <div class="dp-beam" data-d="13"></div>
+        <div class="dp-node" data-d="14">
           <div class="dp-icon">🚀</div>
           <div class="dp-label" style="color:var(--green)">Live !</div>
           <div class="dp-sub" style="color:var(--green)">en prod</div>
@@ -1700,11 +1741,16 @@ function goTo(n){
   if(deployAnim){
     deployAnim.querySelectorAll('.dp-node,.dp-beam').forEach(el=>el.classList.remove('lit','lit-final'));
     const items = Array.from(deployAnim.querySelectorAll('[data-d]')).sort((a,b)=>+a.dataset.d - +b.dataset.d);
-    items.forEach((el,i)=>setTimeout(()=>{
-      const isFinal = i === items.length-1;
-      el.classList.add('lit');
-      if(isFinal && el.classList.contains('dp-node')) el.classList.add('lit-final');
-    }, 400 + i*320));
+    let delay = 400;
+    items.forEach((el,i)=>{
+      const isPP = el.dataset.d === '2'; // nœud pre-push
+      setTimeout(()=>{
+        const isFinal = i === items.length-1;
+        el.classList.add('lit');
+        if(isFinal && el.classList.contains('dp-node')) el.classList.add('lit-final');
+      }, delay);
+      delay += isPP ? 1400 : 320; // pause longue après pre-push pour laisser les 4 outils s'animer
+    });
   }
   // pipeline animation
   const pipe = slides[cur].querySelector('#pipeline-anim');
