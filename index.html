@@ -536,12 +536,10 @@ ic{display:inline-block;background:#1a1a1a;color:var(--orange);border-radius:5px
         <!-- Formateur -->
         <div style="padding:14px 20px;border-radius:14px;border:1px solid rgba(251,191,36,.3);background:linear-gradient(135deg,rgba(251,191,36,.07),rgba(0,0,0,.3));display:flex;align-items:center;gap:14px">
           <div style="width:48px;height:48px;border-radius:50%;background:rgba(251,191,36,.18);display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid rgba(251,191,36,.4);flex-shrink:0">🎓</div>
-          <div>
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px">
-              <span style="font-size:15px;font-weight:900;color:white">Jean-Denis</span>
-              <span style="font-size:10px;padding:2px 9px;border-radius:6px;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:var(--yellow);font-weight:800;letter-spacing:1px;text-transform:uppercase">Formateur</span>
-            </div>
-            <p style="font-size:clamp(10px,0.85vw,12px);color:rgba(255,255,255,.55)">Merci pour ton accompagnement tout au long du projet 🙏</p>
+          <div style="display:flex;align-items:center;gap:10px">
+            <span style="font-size:clamp(14px,1.4vw,18px);font-weight:900;color:white">Jean-Denis</span>
+            <span style="font-size:11px;padding:3px 10px;border-radius:6px;background:rgba(251,191,36,.15);border:1px solid rgba(251,191,36,.3);color:var(--yellow);font-weight:800;letter-spacing:1px;text-transform:uppercase">Formateur</span>
+            <span style="font-size:clamp(14px,1.4vw,18px)">🙏</span>
           </div>
         </div>
 
@@ -1428,14 +1426,11 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
     <!-- Header -->
     <div style="text-align:center">
       <div class="tag fade-up" style="color:var(--green);justify-content:center;margin-bottom:8px">Infrastructure · VPS OVH</div>
-      <h2 class="fade-up" style="font-size:clamp(24px,3vw,44px);line-height:1.1;margin-bottom:6px">
-        Push → <span style="color:var(--green)">Production</span>
+      <h2 class="fade-up" style="font-size:clamp(26px,3.4vw,50px);line-height:1.1;margin-bottom:10px">
+        Push → <span style="color:var(--green)">Production</span> · <span style="color:var(--green)">automatiquement</span>
       </h2>
-      <p class="fade-up" style="font-size:clamp(13px,1.15vw,17px);color:var(--muted2);margin-bottom:6px">
-        On push sur GitHub · le VPS se met à jour <strong style="color:var(--green)">automatiquement</strong> · Zéro intervention manuelle
-      </p>
-      <p class="fade-up" style="font-size:clamp(12px,1.05vw,15px);color:var(--muted);letter-spacing:.5px">
-        C'est ce qu'on appelle le <strong style="color:white;font-weight:800">déploiement continu</strong> — chaque merge en production se déploie sans action humaine.
+      <p class="fade-up" style="font-size:clamp(14px,1.3vw,18px);color:var(--muted2)">
+        Zéro intervention manuelle · c'est le <strong style="color:white">déploiement continu</strong>
       </p>
     </div>
 
@@ -1486,28 +1481,11 @@ scoreFilm({ title: <span class="str">"..."</span> }, <span class="yl">8</span>)
       </div>
     </div>
 
-    <!-- Bottom row: code + badges -->
-    <div class="fade-up" style="display:flex;gap:16px;width:100%;align-items:flex-start">
-      <div class="code-wrap" style="flex:1.2">
-        <div class="code-bar"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div><span class="code-label">VPS — webhook script</span></div>
-        <div class="code-body" style="font-size:11px">
-<span class="cm"># déclenché par GitHub Webhook sur /deploy</span>
-cd <span class="str">/srv/marsai</span>
-git pull origin main
-docker compose down && docker compose up -d --build
-<span class="cm"># ✓ App relancée avec le nouveau code</span>
-        </div>
-      </div>
-      <div style="flex:1;padding:14px 16px;border-radius:12px;border:1px solid rgba(96,165,250,.25);background:rgba(96,165,250,.05);align-self:stretch;display:flex;flex-direction:column;justify-content:center;gap:8px">
-        <div style="font-size:11px;color:var(--blue);font-weight:800;letter-spacing:1px">🎓 CE QU'ON A APPRIS</div>
-        <div style="display:flex;gap:6px;flex-wrap:wrap">
-          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">VPS Linux</span>
-          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">Docker en prod</span>
-          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">GitHub Webhooks</span>
-          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">CI/CD manuel</span>
-          <span style="background:rgba(96,165,250,.1);border:1px solid rgba(96,165,250,.2);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:11px">Nginx reverse proxy</span>
-        </div>
-      </div>
+    <div class="fade-up" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(96,165,250,.3);background:rgba(96,165,250,.08);color:var(--blue);font-weight:700;font-size:clamp(12px,1.1vw,15px)">VPS Linux</span>
+      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(74,222,128,.3);background:rgba(74,222,128,.08);color:var(--green);font-weight:700;font-size:clamp(12px,1.1vw,15px)">Docker</span>
+      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05);color:white;font-weight:700;font-size:clamp(12px,1.1vw,15px)">GitHub Webhooks</span>
+      <span style="padding:8px 18px;border-radius:10px;border:1px solid rgba(167,139,250,.3);background:rgba(167,139,250,.08);color:var(--purple);font-weight:700;font-size:clamp(12px,1.1vw,15px)">Nginx</span>
     </div>
 
   </div>
@@ -1553,65 +1531,42 @@ docker compose down && docker compose up -d --build
     <p class="fade-up" style="color:var(--muted2);margin-bottom:28px;font-size:14px">Sans chacun d'entre vous, rien de tout cela n'aurait été possible.</p>
 
     <!-- Membres de l'équipe -->
-    <div class="fade-up" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px">
+    <div class="fade-up" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px">
 
-      <div class="person-card" style="border-color:rgba(230,57,70,.35)">
-        <div class="avatar" style="border-color:rgba(230,57,70,.5);background:rgba(230,57,70,.12);color:var(--red)">S</div>
-        <div style="text-align:left">
-          <div style="font-weight:700;font-size:15px">Stéphane</div>
-          <div style="font-size:12px;color:var(--red);margin-bottom:2px">Scrum Master</div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:4px">stephane.job@laplateforme.io</div>
-          <div style="font-size:11px;color:var(--muted)">Architecture · DevOps · Méthodologie</div>
-        </div>
+      <div class="person-card" style="border-color:rgba(230,57,70,.35);justify-content:center;flex-direction:column;text-align:center;padding:20px 14px">
+        <div class="avatar" style="border-color:rgba(230,57,70,.5);background:rgba(230,57,70,.12);color:var(--red);margin:0 auto 10px">S</div>
+        <div style="font-weight:900;font-size:clamp(14px,1.4vw,18px);color:white">Stéphane</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--red);font-weight:700">Scrum Master</div>
       </div>
 
-      <div class="person-card" style="border-color:rgba(251,191,36,.35)">
-        <div class="avatar" style="border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.1);color:var(--yellow)">V</div>
-        <div style="text-align:left">
-          <div style="font-weight:700;font-size:15px">Valérie Kergonnan</div>
-          <div style="font-size:12px;color:var(--yellow);margin-bottom:2px">Développeuse</div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:4px">valerie.kergonnan@laplateforme.io</div>
-          <div style="font-size:11px;color:var(--muted)">Frontend · UI · Tests</div>
-        </div>
+      <div class="person-card" style="border-color:rgba(251,191,36,.35);justify-content:center;flex-direction:column;text-align:center;padding:20px 14px">
+        <div class="avatar" style="border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.1);color:var(--yellow);margin:0 auto 10px">V</div>
+        <div style="font-weight:900;font-size:clamp(14px,1.4vw,18px);color:white">Valérie</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--yellow);font-weight:700">Développeuse</div>
       </div>
 
-      <div class="person-card" style="border-color:rgba(96,165,250,.35)">
-        <div class="avatar" style="border-color:rgba(96,165,250,.5);background:rgba(96,165,250,.1);color:var(--blue)">D</div>
-        <div style="text-align:left">
-          <div style="font-weight:700;font-size:15px">Dylan Blanc</div>
-          <div style="font-size:12px;color:var(--blue);margin-bottom:2px">Développeur</div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:4px">dylan.blanc@laplateforme.io</div>
-          <div style="font-size:11px;color:var(--muted)">Backend · API · Base de données</div>
-        </div>
+      <div class="person-card" style="border-color:rgba(96,165,250,.35);justify-content:center;flex-direction:column;text-align:center;padding:20px 14px">
+        <div class="avatar" style="border-color:rgba(96,165,250,.5);background:rgba(96,165,250,.1);color:var(--blue);margin:0 auto 10px">D</div>
+        <div style="font-weight:900;font-size:clamp(14px,1.4vw,18px);color:white">Dylan</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--blue);font-weight:700">Développeur</div>
       </div>
 
-      <div class="person-card" style="border-color:rgba(74,222,128,.35)">
-        <div class="avatar" style="border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.1);color:var(--green)">J</div>
-        <div style="text-align:left">
-          <div style="font-weight:700;font-size:15px">Jean-Denis Saucy</div>
-          <div style="font-size:12px;color:var(--green);margin-bottom:2px">Développeur</div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:4px">jean-denis.saucy@laplateforme.io</div>
-          <div style="font-size:11px;color:var(--muted)">Mobile · Socket.IO · Intégration</div>
-        </div>
+      <div class="person-card" style="border-color:rgba(74,222,128,.35);justify-content:center;flex-direction:column;text-align:center;padding:20px 14px">
+        <div class="avatar" style="border-color:rgba(74,222,128,.5);background:rgba(74,222,128,.1);color:var(--green);margin:0 auto 10px">J</div>
+        <div style="font-weight:900;font-size:clamp(14px,1.4vw,18px);color:white">Jean-Denis</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--green);font-weight:700">Développeur</div>
       </div>
 
-      <div class="person-card" style="border-color:rgba(167,139,250,.35)">
-        <div class="avatar" style="border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.1);color:var(--purple)">M</div>
-        <div style="text-align:left">
-          <div style="font-weight:700;font-size:15px">Mickaël Ayilan</div>
-          <div style="font-size:12px;color:var(--purple);margin-bottom:2px">Développeur</div>
-          <div style="font-size:10px;color:var(--muted);margin-bottom:4px">mickael.ayilan@laplateforme.io</div>
-          <div style="font-size:11px;color:var(--muted)">Features · Tests · Code review</div>
-        </div>
+      <div class="person-card" style="border-color:rgba(167,139,250,.35);justify-content:center;flex-direction:column;text-align:center;padding:20px 14px">
+        <div class="avatar" style="border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.1);color:var(--purple);margin:0 auto 10px">M</div>
+        <div style="font-weight:900;font-size:clamp(14px,1.4vw,18px);color:white">Mickaël</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--purple);font-weight:700">Développeur</div>
       </div>
 
-      <div class="person-card" style="border-color:rgba(34,211,238,.35)">
-        <div class="avatar" style="border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.1);color:var(--cyan)">J</div>
-        <div style="text-align:left">
-          <div style="font-weight:700;font-size:15px">Jean-Ely Gendreau</div>
-          <div style="font-size:12px;color:var(--cyan);margin-bottom:2px">Développeur</div>
-          <div style="font-size:11px;color:var(--muted)">Full-stack · Architecture · Déploiement</div>
-        </div>
+      <div class="person-card" style="border-color:rgba(34,211,238,.35);justify-content:center;flex-direction:column;text-align:center;padding:20px 14px">
+        <div class="avatar" style="border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.1);color:var(--cyan);margin:0 auto 10px">J</div>
+        <div style="font-weight:900;font-size:clamp(14px,1.4vw,18px);color:white">Jean-Ely</div>
+        <div style="font-size:clamp(11px,1vw,13px);color:var(--cyan);font-weight:700">Développeur</div>
       </div>
 
     </div>
